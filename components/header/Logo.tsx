@@ -10,6 +10,7 @@ const Logo = ({ type, onClick }: { type: string; onClick?: () => void }) => {
             src={`/logo-${type}.png`}
             alt="next store logo"
             fill
+            priority
             sizes="(max-width:768px) 100vw,(max-width:1200px) 50vw, 33vw"
           />
         </div>

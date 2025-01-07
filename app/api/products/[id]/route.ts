@@ -1,15 +1,11 @@
 import prisma from "@/utils/db";
 import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (request: NextRequest) => {
-  // Validate the URL
-  if (!request?.url) {
-    return NextResponse.json({ error: "Invalid URL" }, { status: 400 });
-  }
-
-  // Extract product ID from the request's URL
-  const { searchParams } = new URL(request.url);
-  const productId = searchParams.get("id");
+export const GET = async (
+  _request: NextRequest,
+  { params }: { params: { id: string } }
+) => {
+  const productId = params.id;
 
   if (!productId) {
     return NextResponse.json(
