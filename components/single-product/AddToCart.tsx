@@ -14,7 +14,7 @@ const AddToCart = ({
       variant="default"
       size={size}
       className={cn(
-        " bg-brand-500 hover:bg-brand-600 transition-colors duration-300 space-x-2",
+        " bg-brand-500 hover:bg-brand-600 transition-colors duration-300 space-x-2 rounded-sm",
         className
       )}
     >

@@ -11,7 +11,7 @@ const FavButton = () => {
       asChild
     >
       <Link href="/cart">
-        <BiSolidHeart className="!w-6 !h-6 text-stone-100" />
+        <BiSolidHeart className="sm:!w-6 sm:!h-6 !w-4 !h-4 text-stone-100" />
       </Link>
     </Button>
   );

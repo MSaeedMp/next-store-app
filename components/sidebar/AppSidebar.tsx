@@ -59,7 +59,7 @@ const AppSidebar = () => {
       <SidebarContent className=" bg-stone-50 shadow-lg">
         <CustomTriggerClose className="p-4 self-end" />
         <SidebarGroup>
-          <SidebarGroupLabel className="mb-10">
+          <SidebarGroupLabel className="sm:mb-10 mb-5">
             <Logo type="light" onClick={toggleSidebar} />
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -68,11 +68,11 @@ const AppSidebar = () => {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <Link
-                      className="py-7 px-4"
+                      className="sm:py-7 py-5 px-4"
                       href={item.url}
                       onClick={toggleSidebar}
                     >
-                      <item.icon className="!w-6 !h-6" />
+                      <item.icon className="sm:!w-6 sm:!h-6 !w-5 !h-5" />
                       <span className="text-base">{item.title}</span>
                     </Link>
                   </SidebarMenuButton>

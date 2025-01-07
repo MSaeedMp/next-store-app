@@ -5,7 +5,7 @@ const Logo = ({ type, onClick }: { type: string; onClick?: () => void }) => {
   return (
     <div className="self-stretch h-full flex items-center focus:outline-stone-900">
       <Link href="/" onClick={onClick}>
-        <div className=" relative lg:h-[50px] lg:w-[200px] sm:h-[45px] sm:w-[180px] h-[40px] w-[150px]">
+        <div className=" relative lg:h-[50px] lg:w-[200px] sm:h-[45px] sm:w-[180px] h-[32px] w-[138px]">
           <Image
             src={`/logo-${type}.png`}
             alt="next store logo"

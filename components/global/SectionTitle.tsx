@@ -11,14 +11,14 @@ const SectionTitle = ({
     <div className={cn("relative mb-8 sm:-mx-6 -mx-4 lg:-mx-8", className)}>
       <h2
         className={cn(
-          "text-2xl sm:text-3xl font-light tracking-wider  bg-stone-900 text-stone-100 capitalize sm:py-4 sm:px-10 px-5 py-3 inline-block"
+          "text-xl sm:text-3xl font-light tracking-wider  bg-stone-900 text-stone-100 capitalize  sm:px-10 px-5 py-2 sm:py-3 inline-block"
         )}
       >
         {children}
       </h2>
       {/* <h2
         className={cn(
-          "text-2xl sm:text-3xl font-[900] tracking-wide  capitalize sm:py-4 sm:px-10 px-5 py-3 inline-block"
+          "text-2xl sm:text-3xl font-[800] tracking-wide  capitalize sm:py-4 sm:px-10 px-5 py-1 inline-block"
         )}
       >
         {children}

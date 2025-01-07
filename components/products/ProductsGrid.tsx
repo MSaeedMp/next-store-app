@@ -1,5 +1,5 @@
 import { Product } from "@prisma/client";
-import ProductCard from "./ProductCartGridItem";
+import ProductCard from "./ProductCard";
 
 const ProductsGrid = ({ products }: { products: Product[] }) => {
   return (

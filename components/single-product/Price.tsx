@@ -10,10 +10,10 @@ const Price = ({
 }) => {
   return (
     <div
-      className={cn("text-muted-foreground flex items-center gap-2 rounded", className)}
+      className={cn("text-muted-foreground flex items-center gap-2", className)}
     >
-      <CiBag1 className="w-6 h-6" />
-      <span className="font-semibold text-lg">{amount}</span>
+      <CiBag1 className="sm:w-6 sm:h-6 w-4 h-4" />
+      <span className="font-semibold text-base sm:text-lg">{amount}</span>
     </div>
   );
 };

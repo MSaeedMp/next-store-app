@@ -23,9 +23,9 @@ const DeliveryTag = ({
 
   return (
     <div
-      className={cn("text-sm flex items-center gap-2 text-blue-600", className)}
+      className={cn("text-xs sm:text-sm flex items-center gap-2 text-blue-600", className)}
     >
-      <CiDeliveryTruck className="w-6 h-6" />
+      <CiDeliveryTruck className="sm:w-6 sm:h-6 w-4 h-4" />
       <span>
         Usually dispatches in {value} {unitLabel}
       </span>

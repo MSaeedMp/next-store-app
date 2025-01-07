@@ -42,7 +42,7 @@ const HeroSlider = () => {
   }, []);
 
   return (
-    <div className="absolute left-0 top-0 min-h-[600px] sm:h-[750px] lg:h-[900px] w-full overflow-hidden">
+    <div className="absolute left-0 top-0 min-h-[500px] sm:h-[750px] lg:h-[900px] w-full overflow-hidden">
       {images.map((img) => (
         <Image
           key={img.id}

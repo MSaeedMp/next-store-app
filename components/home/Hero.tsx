@@ -8,7 +8,7 @@ const Hero = () => {
       <HeroSlider />
       <HeroHeading />
       <HeroBotFader />
-      <div className="pt-[680px] sm:pt-[900px] lg:pt-[1100px]"></div>
+      <div className="pt-[580px] sm:pt-[900px] lg:pt-[1100px]"></div>
     </>
   );
 };

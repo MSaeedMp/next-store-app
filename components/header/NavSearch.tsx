@@ -106,7 +106,7 @@ const NavSearch = () => {
             }}
             placeholder="Search products..."
             className={cn(
-              "border text-sm focus:outline-stone-200 border-stone-300 rounded-full px-4 py-2 w-44 placeholder:text-sm transition-width ease-in-out duration-500",
+              "border text-sm focus:outline-stone-200 border-stone-300 rounded-full px-4 py-1 sm:py-2 w-44 placeholder:text-sm transition-width ease-in-out duration-500",
               (isFocused || searchQuery || isMobileSearching) &&
                 "pl-10 text-base w-full"
             )}
@@ -125,7 +125,7 @@ const NavSearch = () => {
           onClick={handleMobileSearch}
           className="cursor-pointer focus:outline-stone-900"
         >
-          <CiSearch className="w-6 h-6 text-stone-50" />
+          <CiSearch className="sm:w-6 sm:h-6 w-5 h-5 text-stone-50" />
         </button>
       )}
     </>

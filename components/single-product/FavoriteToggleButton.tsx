@@ -4,8 +4,8 @@ import { Button } from "../ui/button";
 const FavoriteToggleButton = ({ productId }: { productId: string }) => {
   console.log(productId);
   return (
-    <Button size={"icon"} variant={"outline"} className="p-2 cursor-pointer">
-      <FaHeart />
+    <Button size={"icon"} variant={"ghost"} className="cursor-pointer bg-stone-100">
+      <FaHeart className="w-4 h-4 text-stone-900"/>
     </Button>
   );
 };

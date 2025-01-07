@@ -9,7 +9,7 @@ const CustomTriggerMenu = () => {
 
   return (
     <Button variant={"ghost"} onClick={toggleSidebar} className="flex justify-end px-3 py-6 hover:bg-black/20 hover:backdrop-blur-md">
-      <CiMenuFries className="!w-6 !h-6 text-stone-100" />
+      <CiMenuFries className="sm:!w-6 sm:!h-6 !w-5 !h-5 text-stone-100" />
     </Button>
   );
 };
