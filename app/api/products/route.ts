@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import prisma from "@/utils/db";
-import { NextApiRequest } from "next";
+import { NextRequest } from "next/server";
 
-export const GET = async (request: NextApiRequest) => {
+export const GET = async (request: NextRequest) => {
   if (!request?.url)
     return NextResponse.json({ error: "Invalid URL" }, { status: 400 });
 
@@ -10,7 +10,7 @@ export const GET = async (request: NextApiRequest) => {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get("category") as "featured" | "all";
     const search = searchParams.get("search") || "";
-    
+
     let products;
     switch (category) {
       case "all":

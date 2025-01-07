@@ -1,9 +1,9 @@
 import prisma from "@/utils/db";
-import { NextApiRequest } from "next";
+import { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
 export const GET = async (
-  requeset: NextApiRequest,
+  requeset: NextRequest,
   { params }: { params: { id: string } }
 ) => {
   if (!requeset?.url)
