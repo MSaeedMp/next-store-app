@@ -3,11 +3,11 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (
   request: NextRequest,
-  context: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) => {
   // Await context.params to ensure it is resolved correctly
   const { id: productId } = await context.params;
-
+  console.log();
   if (!productId) {
     return NextResponse.json(
       { error: "Product ID is required." },
