@@ -5,7 +5,7 @@ export const GET = async (
   request: NextRequest,
   context: { params: Promise<{ id: string }> }
 ) => {
-  // Await context.params to ensure it is resolved correctly
+  
   const { id: productId } = await context.params;
   console.log();
   if (!productId) {
@@ -14,7 +14,6 @@ export const GET = async (
       { status: 400 }
     );
   }
-
   try {
     const product = await prisma.product.findUnique({
       where: { id: productId },
