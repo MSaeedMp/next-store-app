@@ -1,7 +1,7 @@
 import SingleProductContainer from "@/components/single-product/SingleProductContainer";
 
-const SingleProductPage = async ({ params }: { params: { id: string } }) => {
-  const productId = (await params).id;
+const SingleProductPage = ({ params }: { params: { id: string } }) => {
+  const productId = params.id;
 
   return (
     <section className="pt-28 sm:pt-32">
@@ -9,4 +9,5 @@ const SingleProductPage = async ({ params }: { params: { id: string } }) => {
     </section>
   );
 };
+
 export default SingleProductPage;
