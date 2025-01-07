@@ -35,7 +35,7 @@ const Header = () => {
   return (
     <Container
       className={cn(
-        "flex w-full items-center justify-between fixed left-1/2 -translate-x-1/2 top-0 z-30   transition-colors duration-300 ease-in-out sm:h-20 h-14 backdrop-contrast-125",
+        "flex w-full items-center justify-between fixed left-1/2 -translate-x-1/2 top-0 z-30   transition-colors duration-300 ease-in-out sm:h-20 h-14",
         pathname !== "/"
           ? "bg-stone-900 shadow-lg"
           : showBg && "bg-stone-900 shadow-lg opacity-95"

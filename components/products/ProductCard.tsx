@@ -14,9 +14,9 @@ const ProductCard = ({ product }: { product: Product }) => {
   const eurosAmount = formatCurrency(price);
 
   return (
-    <article key={productId} className="group relative ">
+    <article key={productId} className="group relative">
       <Link href={`/products/${productId}`}>
-        <Card className="transform group-hover:shadow-md transition-shadow duration-500 rounded-sm p-2">
+        <Card className="transform group-hover:shadow-xl transition-shadow duration-500 rounded-sm p-2">
           <CardContent className="p-0">
             <div className="relative h-48 sm:h-64 rounded-tr-sm rounded-tl-sm overflow-hidden mb-2">
               <Image

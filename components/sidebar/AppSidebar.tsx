@@ -68,7 +68,7 @@ const AppSidebar = () => {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <Link
-                      className="sm:py-7 py-5 px-4"
+                      className="sm:py-6 py-5 px-5"
                       href={item.url}
                       onClick={toggleSidebar}
                     >

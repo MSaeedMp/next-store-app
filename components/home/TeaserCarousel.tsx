@@ -53,7 +53,7 @@ const TeaserCarousel = () => {
       <CarouselContent className="">
         {images.map((img) => (
           <CarouselItem className="" key={img.id}>
-            <div className="relative h-[550px]">
+            <div className="relative h-[300px] sm:h-[550px]">
               <Image
                 src={img.image}
                 alt={`Teaser image ${img.id}`}
@@ -65,7 +65,7 @@ const TeaserCarousel = () => {
                 className={"object-cover object-center"}
               />
               <h2
-                className="text-5xl sm:text-6xl md:text-7xl max-w-[250px] sm:max-w-[400px] text-stone-200 font-extrabold absolute top-7 sm:top-10 sm:left-12 md:left-14 left-6 leading-[1.2] tracking-wide"
+                className="text-3xl sm:text-6xl md:text-7xl max-w-[150px] sm:max-w-[400px] text-stone-200 font-extrabold absolute top-7 sm:top-10 sm:left-12 md:left-14 left-6 leading-[1.2] tracking-wide"
                 style={{ textShadow: "0 0 8px rgba(0, 0, 0, 1)" }}
               >
                 {img.motto}
@@ -76,7 +76,7 @@ const TeaserCarousel = () => {
       </CarouselContent>
       <CarouselPrevious className="left-3" />
       <CarouselNext className="right-3" />
-      <CarouselDots className="mt-5" />
+      <CarouselDots className="sm:mt-5 mt-4 !gap-2 sm:!gap-4" />
     </Carousel>
   );
 };
