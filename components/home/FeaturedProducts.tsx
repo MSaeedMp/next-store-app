@@ -5,8 +5,8 @@ import { fetchProducts } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import LoadingContainer from "../global/LoadingProductsGrid";
 import { Product } from "@prisma/client";
-import ProductCarousel from "./ProductScrollArea";
 import SectionTitle from "../global/SectionTitle";
+import ProductScroll from "./ProductScroll";
 
 const FeaturedProducts = () => {
   // Use React Query's useQuery hook to fetch data
@@ -20,7 +20,7 @@ const FeaturedProducts = () => {
   });
 
   // Handle loading state
-  if (isLoading) return <LoadingContainer className="mb-10"/>;
+  if (isLoading) return <LoadingContainer className="mb-10" />;
 
   // Handle error state
   if (error instanceof Error) return <p>Error: {error.message}</p>;
@@ -41,8 +41,7 @@ const FeaturedProducts = () => {
       <SectionTitle className="mt-14">Featured Products</SectionTitle>
 
       {/* Display the products in a grid */}
-      <ProductCarousel products={products} />
-
+      <ProductScroll products={products} />
     </section>
   );
 };
