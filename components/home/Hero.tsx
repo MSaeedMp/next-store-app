@@ -6,7 +6,7 @@ const Hero = () => {
     <>
       <HeroSlider />
       <HeroHeading />
-      <div className="pt-[630] sm:pt-[900px] md:pt-[870px] lg:pt-[1050px]"></div>
+      <div className="pt-[630px] sm:pt-[900px] md:pt-[870px] lg:pt-[1050px]"></div>
     </>
   );
 };
