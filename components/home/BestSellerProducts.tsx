@@ -5,8 +5,8 @@ import { fetchProducts } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import LoadingContainer from "../global/LoadingProductsGrid";
 import { Product } from "@prisma/client";
-import ProductCarousel from "./ProductScrollArea";
 import SectionTitle from "../global/SectionTitle";
+import ProductScroll from "./ProductScroll";
 
 const BestSellerProducts = () => {
   // Use React Query's useQuery hook to fetch data
@@ -35,7 +35,7 @@ const BestSellerProducts = () => {
       <SectionTitle className="mt-14">Best Sellers</SectionTitle>
 
       {/* Display the products in a grid */}
-      <ProductCarousel products={products} />
+      <ProductScroll products={products} />
 
       {/* Extra space for styling */}
     </section>
