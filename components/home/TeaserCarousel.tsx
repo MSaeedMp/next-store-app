@@ -15,6 +15,7 @@ import {
   CarouselPrevious,
   CarouselDots,
 } from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
 
 const images = [
   {
@@ -39,13 +40,13 @@ const images = [
   },
 ];
 
-const TeaserCarousel = () => {
+const TeaserCarousel = ({className}: { className?: string }) => {
   const plugin = React.useRef(Autoplay({ delay: 3000 }));
 
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="sm:-mx-6 -mx-4 lg:-mx-8 my-20"
+      className={cn("sm:-mx-6 -mx-4 lg:-mx-8", className)}
       // onMouseEnter={() => plugin.current.stop()}
       // onMouseLeave={() => plugin.current.play()}
       opts={{ loop: true }}

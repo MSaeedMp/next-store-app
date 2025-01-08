@@ -42,22 +42,25 @@ const HeroSlider = () => {
   }, []);
 
   return (
-    <div className="absolute left-0 top-0 min-h-[500px] sm:h-[750px] lg:h-[900px] w-full overflow-hidden">
-      {images.map((img) => (
-        <Image
-          key={img.id}
-          src={img.image}
-          alt={`Hero image ${img.id}`}
-          sizes="(max-width:768px) 100vw,(max-width:1200px) 50vw, 33vw "
-          fill
-          unoptimized
-          placeholder="blur"
-          className={cn(
-            "object-cover transition-opacity duration-500 ease-in",
-            img.id === imgIndex + 1 ? "opacity-100" : "opacity-0"
-          )}
-        />
-      ))}
+    <div className="absolute  left-0 sm:top-16 top-28 w-full">
+      <div className=" relative w-full min-h-[430px] sm:h-[700px] lg:h-[850px]">
+        {images.map((img) => (
+          <Image
+            key={img.id}
+            src={img.image}
+            alt={`Hero image ${img.id}`}
+            sizes="(max-width:768px) 100vw,(max-width:1200px) 50vw, 33vw "
+            fill
+            unoptimized
+            placeholder="blur"
+            className={cn(
+              "object-cover transition-opacity duration-500 ease-in",
+              img.id === imgIndex + 1 ? "opacity-100" : "opacity-0"
+            )}
+          />
+        ))}
+      </div>
+      <div className="bg-stone-900 w-full lg:h-[350px] sm:h-[320px] h-[200px]"></div>
     </div>
   );
 };

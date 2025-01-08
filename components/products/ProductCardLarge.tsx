@@ -4,17 +4,19 @@ import { formatCurrency } from "@/utils/format";
 import { Card, CardContent } from "../ui/card";
 import Image from "next/image";
 import FavoriteToggleButton from "../single-product/FavoriteToggleButton";
+import AddToCart from "../single-product/AddToCart";
+import DeliveryEstimation from "../single-product/DeliveryTag";
 import PriceTag from "../single-product/PriceTag";
 import Price from "../single-product/Price";
 
-const ProductCard = ({ product }: { product: Product }) => {
+const ProductCardLarge = ({ product }: { product: Product }) => {
   const { id: productId, image, name, price, company } = product;
   const eurosAmount = formatCurrency(price);
 
   return (
     <article key={productId} className="group relative">
       <Link href={`/products/${productId}`}>
-        <Card className="transform group-hover:shadow-xl transition-shadow duration-500 rounded-sm p-2 border-none">
+        <Card className="transform group-hover:shadow-xl transition-shadow duration-500 rounded-sm p-2">
           <CardContent className="p-0">
             <div className="relative h-48 sm:h-64 rounded-tr-sm rounded-tl-sm overflow-hidden mb-2">
               <Image
@@ -34,7 +36,9 @@ const ProductCard = ({ product }: { product: Product }) => {
               <div className="flex flex-col gap-2">
                 <PriceTag className="mt-6" />
                 <Price amount={eurosAmount} />
+                <DeliveryEstimation className="mb-4" unit="days" value={2} />
               </div>
+              <AddToCart className="w-full my-2 sm:py-5" />
             </div>
           </CardContent>
         </Card>
@@ -45,4 +49,4 @@ const ProductCard = ({ product }: { product: Product }) => {
     </article>
   );
 };
-export default ProductCard;
+export default ProductCardLarge;

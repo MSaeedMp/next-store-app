@@ -9,58 +9,75 @@ import FavButton from "./FavButton";
 import { useSearchContext } from "@/hooks/useSearchContext";
 import { cn } from "@/lib/utils";
 import { Suspense, useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import MobileNavbar from "./MobileNavbar";
 
 const Header = () => {
-  const { isFocused, searchQuery, isMobileSearching, isMobile } = useSearchContext();
+  const { isFocused, searchQuery, isMobileSearching, isMobile } =
+    useSearchContext();
   const [lastScrollY, setLastScrollY] = useState<number>(0);
-  const [showBg, setShowBg] = useState<boolean>(false);
-  const pathname = usePathname();
+  const [showHeader, setShowHeader] = useState<boolean>(true);
 
   useEffect(() => {
     const handleScrollY = () => {
       const currentScrollY = window.scrollY;
-      if (currentScrollY > 200 && pathname === "/") {
-        setShowBg(true);
+      if (currentScrollY > 200 && currentScrollY > lastScrollY) {
+        setShowHeader(false);
       } else {
-        setShowBg(false);
+        setShowHeader(true);
       }
       setLastScrollY(currentScrollY);
     };
     window.addEventListener("scroll", handleScrollY);
 
     return () => window.removeEventListener("scroll", handleScrollY);
-  }, [lastScrollY, pathname]);
+  }, [lastScrollY]);
 
   return (
     <Container
       className={cn(
-        "flex w-full items-center justify-between fixed left-1/2 -translate-x-1/2 top-0 z-30   transition-colors duration-300 ease-in-out sm:h-20 h-14",
-        pathname !== "/"
-          ? "bg-stone-900 shadow-lg"
-          : showBg && "bg-stone-900 shadow-lg opacity-95"
+        "w-full bg-stone-900 fixed left-1/2 -translate-x-1/2 top-0 z-30"
       )}
     >
-      {(!isMobileSearching || !isMobile) && <Logo type="dark" />}
-      {!isFocused && !searchQuery && !isMobileSearching && <Navbar />}
       <div
         className={cn(
-          "flex items-center justify-end gap-1",
-          (isFocused || searchQuery || isMobileSearching) && "w-full"
+          "flex items-center justify-between h-16 transition-height duration-300",
+          showHeader || isFocused ? "h-16" : "h-0 invisible"
         )}
       >
-        <Suspense>
-          <NavSearch />
-        </Suspense>
-        
-        {(!isMobileSearching || !isMobile) && (
-          <>
-            <CartButton />
-            <FavButton />
-            <CustomTriggerMenu />
-          </>
+        {(!isMobileSearching || !isMobile) && <Logo type="dark" />}
+        {!isFocused && !searchQuery && !isMobileSearching && !isMobile && (
+          <Navbar />
         )}
+        <div
+          className={cn(
+            "flex items-center justify-end gap-1",
+            (isFocused || searchQuery || isMobileSearching) && "w-full"
+          )}
+        >
+          <Suspense>
+            <NavSearch />
+          </Suspense>
+
+          {(!isMobileSearching || !isMobile) && (
+            <>
+              <CartButton />
+              <FavButton />
+              <CustomTriggerMenu />
+            </>
+          )}
+        </div>
       </div>
+      {isMobile && (
+        <div
+          className={cn(
+            "w-full overflow-scroll no-scrollbar",
+            showHeader || isFocused ? "h-12" : "h-0 invisible"
+          )}
+        >
+          <MobileNavbar />
+        </div>
+      )}
+      {/* <Navbar className="pl-0" /> */}
     </Container>
   );
 };

@@ -6,6 +6,9 @@ import { cn } from "@/lib/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import { useEffect, useRef } from "react";
+import { FaSearch } from "react-icons/fa";
+import { Button } from "../ui/button";
+
 const NavSearch = () => {
   const {
     isFocused,
@@ -72,61 +75,57 @@ const NavSearch = () => {
 
   return (
     <>
-      {
-        <div
+      <div
+        className={cn(
+          "flex items-center mx-4 justify-end w-full",
+          !isMobile || isMobileSearching ? "opacity-100" : "hidden",
+          isMobile && "justify-center m-0"
+        )}
+      >
+        <button
+          type="reset"
           className={cn(
-            "flex items-center mx-4 justify-end w-full",
-            !isMobile || isMobileSearching
-              ? "opacity-100 visible"
-              : "opacity-0 hidden",
-            isMobile && "justify-center"
+            "cursor-pointer transition-all duration-500 -mr-10 relative p-2 z-10 focus:outline-stone-900",
+            !isFocused && !searchQuery
+              ? "opacity-0 invisible"
+              : "opacity-100 visible"
           )}
+          onClick={handleRemove}
         >
-          <button
-            type="reset"
-            className={cn(
-              "cursor-pointer transition-all duration-500 -mr-10 relative p-2 z-10 focus:outline-stone-900",
-              !isFocused && !searchQuery
-                ? "opacity-0 invisible"
-                : "opacity-100 visible"
-            )}
-            onClick={handleRemove}
-          >
-            <IoClose className="w-4 h-4" />
-          </button>
-          <input
-            type="text"
-            ref={inputRef}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-              handleSearch(e.target.value);
-            }}
-            placeholder="Search products..."
-            className={cn(
-              "border text-sm focus:outline-stone-200 border-stone-300 rounded-full px-4 py-1 sm:py-2 w-44 placeholder:text-sm transition-width ease-in-out duration-500",
-              (isFocused || searchQuery || isMobileSearching) &&
-                "pl-10 text-base w-full"
-            )}
-          />
-          <button
-            type="button"
-            className="cursor-pointer p-1 -ml-12 focus:outline-stone-900"
-          >
-            <CiSearch className="w-6 h-6  text-stone-600" />
-          </button>
-        </div>
-      }
-      {isMobile && !isMobileSearching && (
+          <IoClose className="w-4 h-4" />
+        </button>
+        <input
+          type="text"
+          ref={inputRef}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          value={searchQuery}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+            handleSearch(e.target.value);
+          }}
+          placeholder="Search products..."
+          className={cn(
+            "border text-sm focus:outline-stone-200 border-stone-300 rounded-full px-4 py-1 sm:py-2 w-44 placeholder:text-sm transition-width ease-in-out duration-500",
+            (isFocused || searchQuery || isMobileSearching) &&
+              "pl-10 text-base w-full"
+          )}
+        />
         <button
           type="button"
-          onClick={handleMobileSearch}
-          className="cursor-pointer focus:outline-stone-900"
+          className="cursor-pointer p-1 -ml-12 focus:outline-stone-900"
         >
-          <CiSearch className="sm:w-6 sm:h-6 w-5 h-5 text-stone-50" />
+          <CiSearch className="w-6 h-6  text-stone-600" />
         </button>
+      </div>
+      {isMobile && !isMobileSearching && (
+        <Button
+          variant={"ghost"}
+          onClick={handleMobileSearch}
+          className="cursor-pointer focus:outline-stone-900 px-3 py-6 hover:bg-black/20 hover:backdrop-blur-md"
+        >
+          <FaSearch className="!w-6 !h-6 text-stone-50" />
+        </Button>
       )}
     </>
   );

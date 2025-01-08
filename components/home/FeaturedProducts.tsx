@@ -5,7 +5,7 @@ import { fetchProducts } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import LoadingContainer from "../global/LoadingProductsGrid";
 import { Product } from "@prisma/client";
-import ProductCarousel from "./ProductCarousel";
+import ProductCarousel from "./ProductScrollArea";
 import SectionTitle from "../global/SectionTitle";
 
 const FeaturedProducts = () => {

@@ -1,31 +1,29 @@
 import Hero from "@/components/home/Hero";
-import ProductCarouselContainer from "@/components/home/ProductCarouselContainer";
+import ProductScrollArea from "@/components/home/ProductScrollArea";
 import TeaserCarousel from "@/components/home/TeaserCarousel";
 import SectionTitle from "@/components/global/SectionTitle";
+import ProductCompositionContainer from "@/components/home/ProductCompositionContainer";
 
 const HomePage = () => {
   return (
     <>
       <Hero />
-      <SectionTitle className="mt-14">Featured Products</SectionTitle>
-      <ProductCarouselContainer
-        category="featured"
+      <ProductCompositionContainer
+        category="all"
         categoryKey="FeaturedProducts"
+        className="relative z-30"
       />
 
-      <SectionTitle className="mt-14">Best Sellers</SectionTitle>
-      <ProductCarouselContainer
-        category="all"
-        categoryKey="BestSellerProducts"
-      />
+      <SectionTitle className="mt-10">Featured Products</SectionTitle>
+      <ProductScrollArea category="featured" categoryKey="FeaturedProducts" />
 
-      <TeaserCarousel />
+      <SectionTitle className="mt-8">Best Sellers</SectionTitle>
+      <ProductScrollArea category="all" categoryKey="BestSellerProducts" />
 
-      <SectionTitle className="mt-14">Recommended Products</SectionTitle>
-      <ProductCarouselContainer
-        category="all"
-        categoryKey="RecommendedProducts"
-      />
+      <TeaserCarousel className="mt-10" />
+
+      <SectionTitle className="mt-8">Recommended Products</SectionTitle>
+      <ProductScrollArea category="all" categoryKey="RecommendedProducts" />
     </>
   );
 };

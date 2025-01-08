@@ -1,17 +1,30 @@
 "use client";
+
 import * as React from "react";
-import { Product } from "@prisma/client";
 import ProductCard from "../products/ProductCard";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import { Button } from "../ui/button";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useRef, useEffect, useState } from "react";
+import { Product } from "@prisma/client";
 
-const ProductCarousel = ({ products }: { products: Product[] }) => {
+const ProductScroll = ({ products }: { products: Product[] }) => {
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [maxScroll, setMaxScroll] = useState(0);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (viewport) {
+      updateScrollState(); 
+      viewport.addEventListener("scroll", updateScrollState);
+      return () => {
+        viewport.removeEventListener("scroll", updateScrollState);
+      };
+    }
+  }, []);
+
   const isRightEnd = scrollPosition >= maxScroll;
   const isLeftEnd = scrollPosition <= 0;
 
@@ -38,17 +51,6 @@ const ProductCarousel = ({ products }: { products: Product[] }) => {
     }
   };
 
-  useEffect(() => {
-    const viewport = viewportRef.current;
-    if (viewport) {
-      updateScrollState(); // Initial calculation of maxScroll
-      viewport.addEventListener("scroll", updateScrollState);
-      return () => {
-        viewport.removeEventListener("scroll", updateScrollState);
-      };
-    }
-  }, []);
-
   return (
     <div className="relative">
       {!isLeftEnd && (
@@ -57,7 +59,7 @@ const ProductCarousel = ({ products }: { products: Product[] }) => {
           onClick={handleLeftScroll}
           variant="outline"
           disabled={isLeftEnd} // Disable when at the start
-          className="z-10 w-5 sm:w-10 h-full absolute left-0 top-0 bg-stone-400 hover:bg-stone-500 hover:bg-opacity-30 transition-all duration-300 bg-opacity-10 border-none rounded-lt-sm rounded-lb-s rounded-r-none"
+          className="hidden sm:flex z-10 w-5 sm:w-10 h-full absolute left-0 top-0 bg-stone-100 hover:bg-stone-100 hover:bg-opacity-100 transition-all duration-300 bg-opacity-95 border-none rounded-lt-sm rounded-lb-s rounded-r-none"
         >
           <MdOutlineKeyboardArrowLeft className="!w-6 !h-6 text-stone-900" />
         </Button>
@@ -68,7 +70,7 @@ const ProductCarousel = ({ products }: { products: Product[] }) => {
           onClick={handleRightScroll}
           variant="outline"
           disabled={isRightEnd} // Disable when at the end
-          className="z-10 w-5 sm:w-10 h-full absolute right-0 top-0 bg-stone-400 hover:bg-stone-500 hover:bg-opacity-30 transition-all duration-300 bg-opacity-10 border-none rounded-rt-sm rounded-rb-sm rounded-l-none"
+          className="hidden sm:flex z-10 w-5 sm:w-10 h-full absolute right-0 top-0 bg-stone-100 hover:bg-stone-100 hover:bg-opacity-100 transition-all duration-300 bg-opacity-95 border-none rounded-rt-sm rounded-rb-sm rounded-l-none"
         >
           <MdOutlineKeyboardArrowRight className="!w-6 !h-6 text-stone-900" />
         </Button>
@@ -79,7 +81,7 @@ const ProductCarousel = ({ products }: { products: Product[] }) => {
       >
         <div className="flex w-max space-x-2 bg-white py-5">
           {products.map((product) => (
-            <div key={product.id} className="w-[280px] sm:w-[350px]">
+            <div key={product.id} className="w-[220px] sm:w-[300px] lg:w-[350px]">
               <ProductCard product={product} />
             </div>
           ))}
@@ -90,5 +92,4 @@ const ProductCarousel = ({ products }: { products: Product[] }) => {
     </div>
   );
 };
-
-export default ProductCarousel;
+export default ProductScroll;

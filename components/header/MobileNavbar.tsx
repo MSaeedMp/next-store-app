@@ -22,18 +22,17 @@ const navItems = [
   },
 ];
 
-const Navbar = () => {
+const MobileNavbar = () => {
   const pathname = usePathname();
 
   return (
-    <ul className={"hidden lg:flex lg:items-center h-full lg:self-stretch"}>
+    <ul className={"flex items-center gap-2"}>
       {navItems.map((item) => (
         <li key={item.title} className="h-full">
           <Button
-            variant={"link"}
             className={cn(
-              "text-base text-stone-200 py-0 px-6 underline-offset-8 decoration-4 h-full font-[600]",
-              item.url === pathname && "underline"
+              "text-stone-100 h-full font-medium text-sm border border-stone-700 rounded-full px-4 py-2 hover:bg-brand-800",
+              item.url === pathname && "bg-brand-500"
             )}
             asChild
           >
@@ -44,4 +43,4 @@ const Navbar = () => {
     </ul>
   );
 };
-export default Navbar;
+export default MobileNavbar;

@@ -1,7 +1,10 @@
 "use client";
 import Link from "next/link";
-import { CiHeart, CiHome, CiBoxes, CiShoppingCart } from "react-icons/ci";
-import { PiUsersThreeThin } from "react-icons/pi";
+import { FaHome } from "react-icons/fa";
+import { FaBoxesStacked } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa";
+import { HiShoppingCart } from "react-icons/hi2";
+import { FaUsersLine } from "react-icons/fa6";
 
 import {
   Sidebar,
@@ -23,27 +26,27 @@ const items = [
   {
     title: "Home",
     url: "/",
-    icon: CiHome,
+    icon: FaHome,
   },
   {
     title: "Products",
     url: "/products",
-    icon: CiBoxes,
+    icon: FaBoxesStacked,
   },
   {
     title: "Favorites",
     url: "/favorites",
-    icon: CiHeart,
+    icon: FaHeart,
   },
   {
     title: "Cart",
     url: "/cart",
-    icon: CiShoppingCart,
+    icon: HiShoppingCart,
   },
   {
     title: "About us",
     url: "/about",
-    icon: PiUsersThreeThin,
+    icon: FaUsersLine,
   },
 ];
 
@@ -56,10 +59,10 @@ const AppSidebar = () => {
       variant="sidebar"
       collapsible="offcanvas"
     >
-      <SidebarContent className=" bg-stone-50 shadow-lg">
-        <CustomTriggerClose className="p-4 self-end" />
+      <SidebarContent className=" bg-white shadow-lg">
+        <CustomTriggerClose className="p-4" />
         <SidebarGroup>
-          <SidebarGroupLabel className="sm:mb-10 mb-5">
+          <SidebarGroupLabel className="sm:mb-10 mb-8 ">
             <Logo type="light" onClick={toggleSidebar} />
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -68,12 +71,14 @@ const AppSidebar = () => {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <Link
-                      className="sm:py-6 py-5 px-5"
+                      className="py-6 px-4 flex items-center gap-4"
                       href={item.url}
                       onClick={toggleSidebar}
                     >
-                      <item.icon className="sm:!w-6 sm:!h-6 !w-5 !h-5" />
-                      <span className="text-base">{item.title}</span>
+                      <item.icon className="!w-6 !h-6" />
+                      <span className="text-base font-semibold">
+                        {item.title}
+                      </span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

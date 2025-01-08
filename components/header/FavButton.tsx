@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { CiHeart } from "react-icons/ci";
+import { FaHeart } from "react-icons/fa6";
 
 const FavButton = () => {
   return (
@@ -11,7 +11,7 @@ const FavButton = () => {
       asChild
     >
       <Link href="/cart">
-        <CiHeart className="sm:!w-6 sm:!h-6 !w-4 !h-4 text-stone-100" />
+        <FaHeart className="!w-6 !h-6  text-stone-100" />
       </Link>
     </Button>
   );

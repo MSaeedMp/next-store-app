@@ -1,14 +1,12 @@
 import HeroHeading from "./HeroHeading";
 import HeroSlider from "./HeroSlider";
-import HeroBotFader from "./HeroBotFader";
 
 const Hero = () => {
   return (
     <>
       <HeroSlider />
       <HeroHeading />
-      <HeroBotFader />
-      <div className="pt-[580px] sm:pt-[900px] lg:pt-[1100px]"></div>
+      <div className="pt-[610] sm:pt-[900px] md:pt-[870px] lg:pt-[1050px]"></div>
     </>
   );
 };

@@ -12,7 +12,7 @@ const CustomTriggerClose = ({ className }: { className: string }) => {
       onClick={toggleSidebar}
       className={cn("flex items-center justify-end", className)}
     >
-      <IoMdClose className="w-7 h-7" />
+      <IoMdClose className="!w-6 !h-6" />
     </button>
   );
 };
