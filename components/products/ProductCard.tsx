@@ -14,7 +14,7 @@ const ProductCard = ({ product }: { product: Product }) => {
   return (
     <article key={productId} className="group relative">
       <Link href={`/products/${productId}`}>
-        <Card className="transform group-hover:shadow-xl transition-shadow duration-500 rounded-sm p-2 border-none">
+        <Card className="transform group-hover:shadow-xl transition-shadow duration-500 rounded-sm p-0 border-none shadow-md">
           <CardContent className="p-0">
             <div className="relative h-48 sm:h-64 rounded-tr-sm rounded-tl-sm overflow-hidden mb-2">
               <Image
@@ -31,7 +31,7 @@ const ProductCard = ({ product }: { product: Product }) => {
               <p className="text-sm sm:text-base text-muted-foreground">
                 {company}
               </p>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 mb-4">
                 <PriceTag className="mt-6" />
                 <Price amount={eurosAmount} />
               </div>

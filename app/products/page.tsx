@@ -10,7 +10,7 @@ const ProductsPage = async ({
   const search = params.search || "";
 
   return (
-    <section className="pt-28">
+    <section className="pt-36 sm:pt-28">
       <ProductsContainer initialLayout={layout} search={search} />
     </section>
   );

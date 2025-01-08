@@ -59,7 +59,7 @@ const ProductScroll = ({ products }: { products: Product[] }) => {
           size="default"
           onClick={handleLeftScroll}
           variant="outline"
-          className="hidden sm:flex z-10 w-5 sm:w-10 h-full absolute left-0 top-0 bg-white hover:bg-stone-50 transition-all duration-300"
+          className="hidden sm:flex z-10 w-5 sm:w-10 h-full absolute left-0 top-0 bg-white hover:bg-stone-50 transition-all duration-300 rounded-none"
         >
           <MdOutlineKeyboardArrowLeft className="!w-6 !h-6 text-stone-900" />
         </Button>
@@ -69,23 +69,23 @@ const ProductScroll = ({ products }: { products: Product[] }) => {
           size="default"
           onClick={handleRightScroll}
           variant="outline"
-          className="hidden sm:flex z-10 w-5 sm:w-10 h-full absolute right-0 top-0 bg-white hover:bg-stone-50 transition-all duration-300 border-[1px]"
+          className="hidden sm:flex z-10 w-5 sm:w-10 h-full absolute right-0 top-0 bg-white hover:bg-stone-50 transition-all duration-300 border-[1px] rounded-none"
         >
           <MdOutlineKeyboardArrowRight className="!w-6 !h-6 text-stone-900" />
         </Button>
       )}
       <ScrollArea
-        className="w-full whitespace-nowrap rounded-md "
+        className="w-full whitespace-nowrap rounded-none shadow-md"
         viewportRef={viewportRef}
       >
-        <div className="flex w-max space-x-2 bg-white rounded-sm py-10 sm:px-6">
+        <div className="flex w-max space-x-2 sm:space-x-4 bg-white py-6 sm:px-6">
           {products.map((product) => (
-            <div key={product.id} className="w-[220px] sm:w-[300px] lg:w-[350px]">
+            <div key={product.id} className="w-[220px] sm:w-[300px] lg:w-[320px]">
               <ProductCard product={product} />
             </div>
           ))}
         </div>
-        <ScrollBar orientation="horizontal" className="h-2"/>
+        <ScrollBar orientation="horizontal" className="h-[6px]"/>
       </ScrollArea>
     </div>
   );

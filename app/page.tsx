@@ -17,6 +17,13 @@ const HomePage = () => {
       <SectionTitle className="mt-10 mb-4">Featured Products</SectionTitle>
       <ProductScrollArea category="featured" categoryKey="FeaturedProducts" />
 
+      <SectionTitle className="mt-10 mb-4">Trending Products</SectionTitle>
+      <ProductCompositionContainer
+        category="all"
+        categoryKey="FeaturedProducts"
+        className="mt-10"
+      />
+
       <SectionTitle className="mt-10 mb-4">Best Sellers</SectionTitle>
       <ProductScrollArea category="all" categoryKey="BestSellerProducts" />
 
