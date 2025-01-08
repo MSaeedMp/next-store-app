@@ -35,7 +35,7 @@ const Header = () => {
   return (
     <Container
       className={cn(
-        "w-full bg-stone-900 fixed left-1/2 -translate-x-1/2 top-0 z-30"
+        "w-full bg-stone-900 fixed left-1/2 -translate-x-1/2 top-0 z-40"
       )}
     >
       <div

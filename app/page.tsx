@@ -14,15 +14,15 @@ const HomePage = () => {
         className="relative z-30"
       />
 
-      <SectionTitle className="mt-10">Featured Products</SectionTitle>
+      <SectionTitle className="mt-10 mb-4">Featured Products</SectionTitle>
       <ProductScrollArea category="featured" categoryKey="FeaturedProducts" />
 
-      <SectionTitle className="mt-8">Best Sellers</SectionTitle>
+      <SectionTitle className="mt-10 mb-4">Best Sellers</SectionTitle>
       <ProductScrollArea category="all" categoryKey="BestSellerProducts" />
 
-      <TeaserCarousel className="mt-10" />
+      <TeaserCarousel className="mt-14" />
 
-      <SectionTitle className="mt-8">Recommended Products</SectionTitle>
+      <SectionTitle className="mt-10 mb-4">Recommended Products</SectionTitle>
       <ProductScrollArea category="all" categoryKey="RecommendedProducts" />
     </>
   );

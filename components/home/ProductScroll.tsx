@@ -4,9 +4,9 @@ import * as React from "react";
 import ProductCard from "../products/ProductCard";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import { Button } from "../ui/button";
-import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
-import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useRef, useEffect, useState } from "react";
+import { useDebouncedCallback } from "use-debounce";
 import { Product } from "@prisma/client";
 
 const ProductScroll = ({ products }: { products: Product[] }) => {
@@ -14,40 +14,41 @@ const ProductScroll = ({ products }: { products: Product[] }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [maxScroll, setMaxScroll] = useState(0);
 
+  const updateScrollState = useDebouncedCallback(() => {
+    if (viewportRef.current) {
+      const scrollLeft = viewportRef.current.scrollLeft;
+      const maxScrollLeft = viewportRef.current.scrollWidth - viewportRef.current.clientWidth;
+
+      if (scrollPosition !== scrollLeft) setScrollPosition(scrollLeft);
+      if (maxScroll !== maxScrollLeft) setMaxScroll(maxScrollLeft);
+    }
+  }, 100); // Adjusted debounce delay
+
   useEffect(() => {
     const viewport = viewportRef.current;
     if (viewport) {
-      updateScrollState(); 
-      viewport.addEventListener("scroll", updateScrollState);
+      updateScrollState();
+      viewport.addEventListener("scroll", updateScrollState, { passive: true });
       return () => {
         viewport.removeEventListener("scroll", updateScrollState);
       };
     }
-  }, []);
+  }, [updateScrollState]);
 
   const isRightEnd = scrollPosition >= maxScroll;
   const isLeftEnd = scrollPosition <= 0;
 
-  const updateScrollState = () => {
-    if (viewportRef.current) {
-      setScrollPosition(viewportRef.current.scrollLeft);
-      setMaxScroll(
-        viewportRef.current.scrollWidth - viewportRef.current.clientWidth
-      );
-    }
-  };
-
   const handleLeftScroll = () => {
     if (viewportRef.current) {
       viewportRef.current.scrollLeft -= 280;
-      updateScrollState();
+      updateScrollState(); // Trigger update manually
     }
   };
 
   const handleRightScroll = () => {
     if (viewportRef.current) {
       viewportRef.current.scrollLeft += 280;
-      updateScrollState();
+      updateScrollState(); // Trigger update manually
     }
   };
 
@@ -58,8 +59,7 @@ const ProductScroll = ({ products }: { products: Product[] }) => {
           size="default"
           onClick={handleLeftScroll}
           variant="outline"
-          disabled={isLeftEnd} // Disable when at the start
-          className="hidden sm:flex z-10 w-5 sm:w-10 h-full absolute left-0 top-0 bg-stone-100 hover:bg-stone-100 hover:bg-opacity-100 transition-all duration-300 bg-opacity-95 border-none rounded-lt-sm rounded-lb-s rounded-r-none"
+          className="hidden sm:flex z-10 w-5 sm:w-10 h-full absolute left-0 top-0 bg-white hover:bg-stone-50 transition-all duration-300"
         >
           <MdOutlineKeyboardArrowLeft className="!w-6 !h-6 text-stone-900" />
         </Button>
@@ -69,27 +69,26 @@ const ProductScroll = ({ products }: { products: Product[] }) => {
           size="default"
           onClick={handleRightScroll}
           variant="outline"
-          disabled={isRightEnd} // Disable when at the end
-          className="hidden sm:flex z-10 w-5 sm:w-10 h-full absolute right-0 top-0 bg-stone-100 hover:bg-stone-100 hover:bg-opacity-100 transition-all duration-300 bg-opacity-95 border-none rounded-rt-sm rounded-rb-sm rounded-l-none"
+          className="hidden sm:flex z-10 w-5 sm:w-10 h-full absolute right-0 top-0 bg-white hover:bg-stone-50 transition-all duration-300 border-[1px]"
         >
           <MdOutlineKeyboardArrowRight className="!w-6 !h-6 text-stone-900" />
         </Button>
       )}
       <ScrollArea
-        className="w-full whitespace-nowrap rounded-md"
+        className="w-full whitespace-nowrap rounded-md "
         viewportRef={viewportRef}
       >
-        <div className="flex w-max space-x-2 bg-white py-5">
+        <div className="flex w-max space-x-2 bg-white rounded-sm py-10 sm:px-6">
           {products.map((product) => (
             <div key={product.id} className="w-[220px] sm:w-[300px] lg:w-[350px]">
               <ProductCard product={product} />
             </div>
           ))}
         </div>
-        <ScrollBar orientation="horizontal" />
+        <ScrollBar orientation="horizontal" className="h-2"/>
       </ScrollArea>
-      <div className="mt-4 flex items-center gap-2"></div>
     </div>
   );
 };
+
 export default ProductScroll;

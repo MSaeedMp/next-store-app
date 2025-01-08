@@ -6,14 +6,13 @@ const LoadingProduct = () => {
   return (
     <Card className="transform group-hover:shadow-md transition-shadow duration-500 rounded-sm border-[1px] shadow-none">
       <CardContent className="p-4">
-        <Skeleton className="h-96 w-full" />
+        <Skeleton className="h-48 w-full" />
         <Skeleton className="h-4 w-1/4 mt-4" />
         <Skeleton className="h-4 w-1/5 mt-4" />
-        <Skeleton className="h-[1px] w-full mt-4 mb-10" />
         <Skeleton className="h-4 w-1/4 mt-2" />
         <Skeleton className="h-4 w-1/4 mt-2" />
-        <Skeleton className="h-4 w-1/2 mt-2" />
-        <Skeleton className="h-8 w-full py-6 mt-4 mb-2" />
+        {/* <Skeleton className="h-4 w-1/2 mt-2" />
+        <Skeleton className="h-8 w-full py-6 mt-4 mb-2" /> */}
       </CardContent>
     </Card>
   );

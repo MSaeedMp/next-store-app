@@ -60,7 +60,7 @@ const HeroSlider = () => {
           />
         ))}
       </div>
-      <div className="bg-stone-900 w-full lg:h-[350px] sm:h-[320px] h-[200px]"></div>
+      <div className="bg-stone-900 w-full lg:h-[350px] sm:h-[320px] h-[220px]"></div>
     </div>
   );
 };

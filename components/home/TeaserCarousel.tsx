@@ -66,7 +66,7 @@ const TeaserCarousel = ({className}: { className?: string }) => {
                 className={"object-cover object-center"}
               />
               <h2
-                className="text-3xl sm:text-6xl md:text-7xl max-w-[150px] sm:max-w-[400px] text-stone-200 font-extrabold absolute top-7 sm:top-10 sm:left-12 md:left-14 left-6 leading-[1.2] tracking-wide"
+                className="text-3xl sm:text-6xl md:text-6xl max-w-[150px] sm:max-w-[300px] text-stone-100 font-extrabold absolute top-7 sm:top-10 sm:left-12 md:left-14 left-6 tracking-wide"
                 style={{ textShadow: "0 0 8px rgba(0, 0, 0, 1)" }}
               >
                 {img.motto}

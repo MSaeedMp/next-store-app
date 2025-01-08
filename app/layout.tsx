@@ -13,6 +13,7 @@ const roboto = Roboto({
   variable: "--font-roboto",
   display: "swap",
   weight: ["100", "300", "400", "500", "700", "900"],
+  preload: true,
 });
 
 export const metadata: Metadata = {
