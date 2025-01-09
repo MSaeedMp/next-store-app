@@ -8,6 +8,7 @@ import Wrapper from "@/components/global/Wrapper";
 import Providers from "./providers";
 import Footer from "@/components/global/Footer";
 // import { ClerkProvider } from "@clerk/nextjs";
+import { SessionProvider } from "next-auth/react";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -31,57 +32,59 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        {/* Standard Favicon */}
-        <link rel="icon" href="/favicon.ico" />
+    <SessionProvider>
+      <html lang="en">
+        <head>
+          {/* Standard Favicon */}
+          <link rel="icon" href="/favicon.ico" />
 
-        {/* Favicon for different sizes */}
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
+          {/* Favicon for different sizes */}
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+          />
 
-        {/* Apple Touch Icon */}
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+          {/* Apple Touch Icon */}
+          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-        {/* Android Icons */}
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="192x192"
-          href="/android-chrome-192x192.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="512x512"
-          href="/android-chrome-512x512.png"
-        />
+          {/* Android Icons */}
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="/android-chrome-192x192.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="512x512"
+            href="/android-chrome-512x512.png"
+          />
 
-        {/* Web Manifest for PWA */}
-        <link rel="manifest" href="/site.webmanifest" />
-      </head>
-      <body
-        className={`${roboto.variable} antialiased w-full bg-stone-50 text-stone-950`}
-      >
-        <Providers>
-          <AppSidebar />
-          <Wrapper className="shadow-lg">
-            <Header />
-            <Container>{children}</Container>
-            <Footer />
-          </Wrapper>
-        </Providers>
-      </body>
-    </html>
+          {/* Web Manifest for PWA */}
+          <link rel="manifest" href="/site.webmanifest" />
+        </head>
+        <body
+          className={`${roboto.variable} antialiased w-full bg-stone-50 text-stone-950`}
+        >
+          <Providers>
+            <AppSidebar />
+            <Wrapper className="shadow-lg">
+              <Header />
+              <Container>{children}</Container>
+              <Footer />
+            </Wrapper>
+          </Providers>
+        </body>
+      </html>
+    </SessionProvider>
   );
 }
