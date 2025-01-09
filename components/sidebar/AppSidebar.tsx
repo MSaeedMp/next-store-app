@@ -26,10 +26,10 @@ import CustomTriggerClose from "./CustomTriggerClose";
 //   SignOutButton,
 // } from "@clerk/nextjs";
 import { Separator } from "../ui/separator";
-import { RiLoginBoxFill } from "react-icons/ri";
-import { RiLogoutBoxFill } from "react-icons/ri";
-import { toast } from "@/hooks/use-toast";
-import { cn } from "@/lib/utils";
+// import { RiLoginBoxFill } from "react-icons/ri";
+// import { RiLogoutBoxFill } from "react-icons/ri";
+// import { toast } from "@/hooks/use-toast";
+// import { cn } from "@/lib/utils";
 
 // Menu items.
 const items = [
