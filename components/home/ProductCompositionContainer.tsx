@@ -28,7 +28,7 @@ const ProductCompositionContainer = ({
     queryKey: [{ categoryKey }],
   });
 
-  if (isLoading) return <LoadingProductsGrid className="mb-10" />;
+  if (isLoading) return <LoadingProductsGrid className="mb-10 mt-72" />;
   if (error instanceof Error) return <ErrorContainer />;
   if (!products || products.length === 0) return <EmptyList />;
 

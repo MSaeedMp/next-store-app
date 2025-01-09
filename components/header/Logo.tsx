@@ -19,7 +19,7 @@ const Logo = ({
       )}
     >
       <Link href="/" onClick={onClick}>
-        <div className=" relative lg:h-[50px] lg:w-[200px] sm:h-[45px] sm:w-[180px] h-[40px] w-[148px]">
+        <div className=" relative lg:h-[50px] lg:w-[200px] sm:h-[45px] sm:w-[180px] h-[38px] w-[148px]">
           <Image
             src={`/logo-${type}.png`}
             alt="next store logo"

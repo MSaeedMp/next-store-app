@@ -31,7 +31,7 @@ const MobileNavbar = () => {
         <li key={item.title} className="h-full">
           <Button
             className={cn(
-              "text-stone-100 h-full font-medium text-sm border border-stone-700 rounded-full px-4 py-2 hover:bg-brand-800",
+              "text-stone-100 h-full font-medium text-sm border border-stone-700 rounded-full px-4 py-2 hover:bg-brand-500",
               item.url === pathname && "bg-brand-500"
             )}
             asChild

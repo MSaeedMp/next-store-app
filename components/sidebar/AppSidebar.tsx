@@ -19,7 +19,17 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import CustomTriggerClose from "./CustomTriggerClose";
-import Logo from "../header/Logo";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignOutButton,
+} from "@clerk/nextjs";
+import { Separator } from "../ui/separator";
+import { RiLoginBoxFill } from "react-icons/ri";
+import { RiLogoutBoxFill } from "react-icons/ri";
+import { toast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
 
 // Menu items.
 const items = [
@@ -60,18 +70,60 @@ const AppSidebar = () => {
       collapsible="offcanvas"
     >
       <SidebarContent className=" bg-white shadow-lg">
-        <CustomTriggerClose className="p-4" />
-        <SidebarGroup>
-          <SidebarGroupLabel className="sm:mb-10 mb-8 ">
-            <Logo type="light" onClick={toggleSidebar} />
+        <SidebarGroup className="">
+          <SidebarGroupLabel className="sm:mb-10 mb-8 mt-4 flex justify-between items-center">
+            <p className="font-[900] text-2xl text-foreground ">Next Store</p>
+            <CustomTriggerClose className="p-4 text-foreground" />
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <button
+                    onClick={toggleSidebar}
+                    className="w-full font-semibold text-base flex justify-start items-center py-3 px-4 gap-4 hover:bg-brand-100"
+                  >
+                    <RiLoginBoxFill className="w-6 h-6" />
+                    <span>Login</span>
+                  </button>
+                </SignInButton>
+                {/* <SignUpButton mode="modal">
+                  <button
+                    onClick={toggleSidebar}
+                    className="w-full font-semibold text-base flex justify-start items-center py-3 px-4 gap-4 hover:bg-brand-100"
+                  >
+                    <SiGnuprivacyguard className="w-6 h-6" />
+                    <span>Register</span>
+                  </button>
+                </SignUpButton> */}
+              </SignedOut>
+              <SignedIn>
+                <SignOutButton redirectUrl="/">
+                  <button
+                    onClick={() => {
+                      toggleSidebar();
+                      toast({
+                        variant: "default",
+                        description: "Signed out Successfully!",
+                        className: cn(
+                          "fixed bottom-4 left-1/2 -translate-x-1/2 w-64 border-4 border-green-500"
+                        ),
+                      });
+                    }}
+                    className="w-full font-semibold text-base flex justify-start items-center py-3 px-4 gap-4 hover:bg-brand-100"
+                  >
+                    <RiLogoutBoxFill className="w-6 h-6" />
+                    <span>Sign out</span>
+                  </button>
+                </SignOutButton>
+              </SignedIn>
+              <Separator className="h-1" />
+
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <Link
-                      className="py-6 px-4 flex items-center gap-4"
+                      className="py-6 px-4 flex items-center gap-4 hover:bg-brand-100"
                       href={item.url}
                       onClick={toggleSidebar}
                     >

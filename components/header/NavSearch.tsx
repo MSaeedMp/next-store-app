@@ -47,8 +47,9 @@ const NavSearch = () => {
   useEffect(() => {
     if (!searchParams.get("search")) {
       setSearchQuery("");
+      setIsMobileSearching(false)
     }
-  }, [searchParams, setSearchQuery]);
+  }, [searchParams, setSearchQuery, setIsMobileSearching]);
 
   const handleSearch = useDebouncedCallback((value: string) => {
     if (value.length < 3 && value.length !== 0) return;
@@ -72,7 +73,7 @@ const NavSearch = () => {
     params.delete("search");
     replace(`/products?${params.toString()}`);
   };
-
+  
   return (
     <>
       <div
@@ -106,7 +107,7 @@ const NavSearch = () => {
           }}
           placeholder="Search products..."
           className={cn(
-            "border text-sm focus:outline-stone-200 border-stone-300 rounded-full px-4 py-1 sm:py-2 w-44 placeholder:text-sm transition-width ease-in-out duration-500",
+            "border text-sm focus:outline-stone-200 border-stone-300 rounded-full px-4 py-2 w-44 placeholder:text-sm transition-width ease-in-out duration-500",
             (isFocused || searchQuery || isMobileSearching) &&
               "pl-10 text-base w-full"
           )}
