@@ -13,6 +13,7 @@ import LoadingProductsGrid from "../global/LoadingProductsGrid";
 import ProductsList from "./ProductsList";
 import ErrorContainer from "../global/ErrorContainer";
 import LoadingProductsList from "../global/LoadingProductsList";
+import { useAuth } from "@clerk/nextjs";
 
 const ProductsContainer = ({
   initialLayout,
@@ -24,7 +25,7 @@ const ProductsContainer = ({
   const searchParams = useSearchParams();
   const [layout, setLayout] = useState(initialLayout);
   const router = useRouter();
-
+  const { getToken } = useAuth();
   // Extract current search and layout from URL
   const currentSearch = searchParams.get("search") || search || "";
   const currentLayout = searchParams.get("layout") || initialLayout;
@@ -36,7 +37,10 @@ const ProductsContainer = ({
     isLoading,
   } = useQuery<Product[]>({
     queryKey: ["allProducts", currentSearch], // Include currentSearch in the queryKey
-    queryFn: () => fetchProducts("all", currentSearch), // Use the updated search value
+    queryFn: async () => {
+      const token = await getToken(); // Get the user's token from Clerk
+      return fetchProducts("all", currentSearch, token); // Pass the token to the fetch function
+    },
   });
 
   // Update layout state when URL changes
