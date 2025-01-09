@@ -123,7 +123,8 @@ const AppSidebar = () => {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <Link
-                      className="py-6 px-4 flex items-center gap-4 hover:bg-brand-100"
+                      className="py-6 px-4 flex items-center gap-4 
+                      !hover:bg-brand-100"
                       href={item.url}
                       onClick={toggleSidebar}
                     >
