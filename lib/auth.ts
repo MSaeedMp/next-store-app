@@ -9,6 +9,7 @@ const authConfig: NextAuthConfig = {
       clientSecret: getEnvVariable("GOOGLE_CLIENT_SECRET"),
     }),
   ],
+  secret: getEnvVariable("NEXTAUTH_SECRET"),
   callbacks: {
     authorized({ auth }) {
       return !!auth?.user;
