@@ -7,7 +7,7 @@ import AppSidebar from "@/components/sidebar/AppSidebar";
 import Wrapper from "@/components/global/Wrapper";
 import Providers from "./providers";
 import Footer from "@/components/global/Footer";
-import { ClerkProvider } from "@clerk/nextjs";
+// import { ClerkProvider } from "@clerk/nextjs";
 
 const roboto = Roboto({
   subsets: ["latin"],
