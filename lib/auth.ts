@@ -1,6 +1,6 @@
 import NextAuth, { NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
-import { getEnvVariable } from "@/utils/helper";
+// import { getEnvVariable } from "@/utils/helper";
 
 const authConfig: NextAuthConfig = {
   providers: [Google],
