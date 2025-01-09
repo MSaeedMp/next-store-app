@@ -7,21 +7,15 @@ import LoadingContainer from "../global/LoadingProductsGrid";
 import { Product } from "@prisma/client";
 import SectionTitle from "../global/SectionTitle";
 import ProductScroll from "./ProductScroll";
-import { useAuth } from "@clerk/nextjs";
 
 const BestSellerProducts = () => {
   // Use React Query's useQuery hook to fetch data
-  const { getToken } = useAuth(); // Get the Clerk token
-
   const {
     data: products,
     error,
     isLoading,
   } = useQuery<Product[], Error>({
-    queryFn: async () => {
-      const token = await getToken(); // Get the user's token from Clerk
-      return fetchProducts("all", "", token); // Pass the token to the fetch function
-    },
+    queryFn: () => fetchProducts("all"),
     queryKey: ["bestSellerProducts"],
   });
 

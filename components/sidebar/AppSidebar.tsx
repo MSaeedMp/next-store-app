@@ -19,17 +19,18 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import CustomTriggerClose from "./CustomTriggerClose";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignOutButton,
-} from "@clerk/nextjs";
+// import {
+//   SignedIn,
+//   SignedOut,
+//   SignInButton,
+//   SignOutButton,
+// } from "@clerk/nextjs";
 import { Separator } from "../ui/separator";
-import { RiLoginBoxFill } from "react-icons/ri";
-import { RiLogoutBoxFill } from "react-icons/ri";
-import { toast } from "@/hooks/use-toast";
-import { cn } from "@/lib/utils";
+// import { RiLoginBoxFill } from "react-icons/ri";
+// import { RiLogoutBoxFill } from "react-icons/ri";
+// import { toast } from "@/hooks/use-toast";
+// import { cn } from "@/lib/utils";
+import { MdDashboard } from "react-icons/md";
 
 // Menu items.
 const items = [
@@ -58,6 +59,11 @@ const items = [
     url: "/about",
     icon: FaUsersLine,
   },
+  {
+    title: "Dashboard",
+    url: "/admin/sales",
+    icon: MdDashboard,
+  },
 ];
 
 const AppSidebar = () => {
@@ -77,7 +83,7 @@ const AppSidebar = () => {
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SignedOut>
+              {/* <SignedOut>
                 <SignInButton mode="modal">
                   <button
                     onClick={toggleSidebar}
@@ -107,7 +113,7 @@ const AppSidebar = () => {
                     <span>Sign out</span>
                   </button>
                 </SignOutButton>
-              </SignedIn>
+              </SignedIn> */}
               <Separator className="h-1" />
 
               {items.map((item) => (
