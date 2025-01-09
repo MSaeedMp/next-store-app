@@ -41,11 +41,7 @@ export const GET = async (request: NextRequest) => {
           { status: 400 }
         );
     }
-    return NextResponse.json(products, {headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    }});
+    return NextResponse.json(products);
   } catch (error) {
     console.error("Error fetching products:", error);
 

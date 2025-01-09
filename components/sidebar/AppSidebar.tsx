@@ -19,12 +19,12 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import CustomTriggerClose from "./CustomTriggerClose";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignOutButton,
-} from "@clerk/nextjs";
+// import {
+//   SignedIn,
+//   SignedOut,
+//   SignInButton,
+//   SignOutButton,
+// } from "@clerk/nextjs";
 import { Separator } from "../ui/separator";
 import { RiLoginBoxFill } from "react-icons/ri";
 import { RiLogoutBoxFill } from "react-icons/ri";
@@ -77,7 +77,7 @@ const AppSidebar = () => {
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SignedOut>
+              {/* <SignedOut>
                 <SignInButton mode="modal">
                   <button
                     onClick={toggleSidebar}
@@ -87,15 +87,6 @@ const AppSidebar = () => {
                     <span>Login</span>
                   </button>
                 </SignInButton>
-                {/* <SignUpButton mode="modal">
-                  <button
-                    onClick={toggleSidebar}
-                    className="w-full font-semibold text-base flex justify-start items-center py-3 px-4 gap-4 hover:bg-brand-100"
-                  >
-                    <SiGnuprivacyguard className="w-6 h-6" />
-                    <span>Register</span>
-                  </button>
-                </SignUpButton> */}
               </SignedOut>
               <SignedIn>
                 <SignOutButton redirectUrl="/">
@@ -116,7 +107,7 @@ const AppSidebar = () => {
                     <span>Sign out</span>
                   </button>
                 </SignOutButton>
-              </SignedIn>
+              </SignedIn> */}
               <Separator className="h-1" />
 
               {items.map((item) => (

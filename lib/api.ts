@@ -4,9 +4,12 @@ export const fetchProducts = async (
   category: "featured" | "all",
   search?: string
 ): Promise<Product[]> => {
+
   let url = `/api/products?category=${category}`;
   if (search && search !== "undefined") url += `&search=${search}`;
-  const response = await fetch(url, { method: "GET" });
+  const response = await fetch(url, {
+    method: "GET",
+  });
   if (!response.ok) throw new Error("Error fetching products");
   return response.json();
 };
