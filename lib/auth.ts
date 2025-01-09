@@ -11,8 +11,9 @@ const authConfig: NextAuthConfig = {
   ],
   secret: getEnvVariable("NEXTAUTH_SECRET"),
   callbacks: {
-    authorized({ auth }) {
-      return !!auth?.user;
+    async jwt({ token }) {
+      token.userRole = "user";
+      return token;
     },
   },
 };
