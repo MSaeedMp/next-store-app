@@ -11,21 +11,21 @@ import Price from "../single-product/Price";
 
 const ProductCardLarge = ({ product }: { product: Product }) => {
   const { id: productId, image, name, price, company } = product;
-  const eurosAmount = formatCurrency(price);
+  const eurosAmount = formatCurrency(Number(price));
 
   return (
     <article key={productId} className="group relative">
       <Link href={`/products/${productId}`}>
-        <Card className="transform group-hover:shadow-xl transition-shadow duration-500 rounded-sm p-2">
+        <Card className="transform group-hover:shadow-xl transition-shadow duration-500 border-none rounded-none shadow-md">
           <CardContent className="p-0">
-            <div className="relative h-48 sm:h-64 rounded-tr-sm rounded-tl-sm overflow-hidden mb-2">
+            <div className="relative h-48 sm:h-64 overflow-hidden mb-2">
               <Image
                 src={image}
                 alt={name}
                 fill
                 sizes="(max-width:768px) 100vw,(max-width:1200px) 50vw, 33vw "
                 priority
-                className="w-full object-cover transform group-hover:scale-110 transition-transform rounded-tr-sm rounded-tl-sm duration-500"
+                className="w-full object-cover transform group-hover:scale-110 transition-transform duration-500"
               />
             </div>
             <div className="sm:px-4 p-2">
@@ -38,12 +38,12 @@ const ProductCardLarge = ({ product }: { product: Product }) => {
                 <Price amount={eurosAmount} />
                 <DeliveryEstimation className="mb-4" unit="days" value={2} />
               </div>
-              <AddToCart className="w-full my-2 sm:py-5" />
             </div>
+            <AddToCart productId={productId} />
           </CardContent>
         </Card>
       </Link>
-      <div className="absolute top-4 right-4 z-5">
+      <div className="absolute top-3 right-3 z-5">
         <FavoriteToggleButton productId={productId} />
       </div>
     </article>

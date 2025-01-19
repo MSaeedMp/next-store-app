@@ -1,8 +1,21 @@
+"use client";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { HiShoppingCart } from "react-icons/hi2";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCartItems } from "@/actions/action-cart";
+import { useSession } from "next-auth/react";
+// import { useAuthContext } from "@/hooks/useAuthContext";
 
 const CartButton = () => {
+  // const { user } = useAuthContext();
+  const session = useSession();
+  const user = session.data?.user;
+  const { data } = useQuery({
+    queryKey: ["numItemsInCart", user],
+    queryFn: () => fetchCartItems(),
+  });
+
   return (
     <Button
       variant="ghost"
@@ -12,12 +25,13 @@ const CartButton = () => {
     >
       <Link href="/cart" className="p-6">
         <HiShoppingCart className="!w-6 !h-6 text-stone-100" />
-        <span className="absolute z-10 top-1 right-0 bg-stone-200 rounded-full w-3 h-3 text-stone-950  text-center flex items-center justify-center text-[10px]">
-          1
-        </span>
+        {user && (
+          <span className="absolute z-10 -top-0 -right-2 bg-white rounded-full w-4 h-4 p-2.5 text-stone-950 text-center flex items-center justify-center text-xs font-[900]">
+            {data}
+          </span>
+        )}
       </Link>
     </Button>
-
   );
 };
 export default CartButton;

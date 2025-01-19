@@ -9,7 +9,7 @@ import Price from "../single-product/Price";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const { id: productId, image, name, price, company } = product;
-  const eurosAmount = formatCurrency(price);
+  const eurosAmount = formatCurrency(price.toNumber());
 
   return (
     <article key={productId} className="group relative">
@@ -39,7 +39,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           </CardContent>
         </Card>
       </Link>
-      <div className="absolute top-4 right-4 z-5">
+      <div className="absolute top-3 right-3 z-5">
         <FavoriteToggleButton productId={productId} />
       </div>
     </article>

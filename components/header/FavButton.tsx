@@ -10,7 +10,7 @@ const FavButton = () => {
       className="hidden sm:flex relative p-6 hover:bg-black/20 hover:backdrop-blur-md"
       asChild
     >
-      <Link href="/cart">
+      <Link href="/favorites">
         <FaHeart className="!w-6 !h-6  text-stone-100" />
       </Link>
     </Button>

@@ -3,7 +3,7 @@
 import EmptyList from "../global/EmptyList";
 import { fetchProducts } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
-import LoadingContainer from "../global/LoadingProductsGrid";
+import LoadingContainer from "../global/LoadingGrid";
 import { Product } from "@prisma/client";
 import SectionTitle from "../global/SectionTitle";
 import ProductScroll from "./ProductScroll";

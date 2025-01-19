@@ -1,16 +1,12 @@
-import { Button } from "../ui/button";
-import { CiHeart } from "react-icons/ci";
+import { getAuthUser } from "@/actions/action-utils";
+import { CardSignInButton } from "../form/Buttons";
+import FavoriteToggleForm from "../form/FavoriteToggleForm";
+import { fetchIsFavorite } from "@/actions/action-favorite";
 
-const FavoriteToggleButton = ({ productId }: { productId: string }) => {
-  return (
-    <Button
-      size={"icon"}
-      variant={"ghost"}
-      className="cursor-pointer hover:bg-stone-900 bg-stone-900 bg-opacity-30 transition-color duration-500"
-    >
-      <CiHeart className="sm:!w-6 sm:!h-6 !w-5 !h-5 text-stone-50" />
-      <p className="hidden"> {productId}</p>
-    </Button>
-  );
+const FavoriteToggleButton = async ({ productId }: { productId: string }) => {
+  const user = await getAuthUser();
+  if (!user) return <CardSignInButton />;
+  const isFavorite = await fetchIsFavorite(productId);
+  return <FavoriteToggleForm isFavorite={isFavorite} productId={productId} />;
 };
 export default FavoriteToggleButton;

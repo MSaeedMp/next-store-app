@@ -1,13 +1,8 @@
-import HeroHeading from "./HeroHeading";
-import HeroSlider from "./HeroSlider";
-
-const Hero = () => {
+const Hero = ({ children }: { children: React.ReactNode }) => {
   return (
-    <>
-      <HeroSlider />
-      <HeroHeading />
-      <div className="pt-[630px] sm:pt-[900px] md:pt-[870px] lg:pt-[1050px]"></div>
-    </>
+    <section className="pt-[630px] sm:pt-[900px] md:pt-[870px] lg:pt-[1050px] min-h-[calc(100vh-34rem)]">
+      {children}
+    </section>
   );
 };
 export default Hero;

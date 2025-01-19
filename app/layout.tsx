@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import Container from "@/components/global/Container";
-import Header from "@/components/header/Header";
 import AppSidebar from "@/components/sidebar/AppSidebar";
 import Wrapper from "@/components/global/Wrapper";
 import Providers from "./providers";
 import Footer from "@/components/global/Footer";
-// import { ClerkProvider } from "@clerk/nextjs";
 import { SessionProvider } from "next-auth/react";
+import Header from "@/components/header/Header";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -24,6 +23,24 @@ export const metadata: Metadata = {
     default: "Next Store",
   },
   description: "A netify app built with Next.js",
+  keywords: [
+    "e-commerce",
+    "Next.js",
+    "React",
+    "Tailwind CSS",
+    "Type script",
+  ],
+  authors: [
+    {
+      name: "M. Saeed Mafipour",
+    },
+  ],
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
@@ -33,45 +50,7 @@ export default function RootLayout({
 }>) {
   return (
     <SessionProvider>
-      <html lang="en">
-        <head>
-          {/* Standard Favicon */}
-          <link rel="icon" href="/favicon.ico" />
-
-          {/* Favicon for different sizes */}
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/favicon-16x16.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/favicon-32x32.png"
-          />
-
-          {/* Apple Touch Icon */}
-          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-          {/* Android Icons */}
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="192x192"
-            href="/android-chrome-192x192.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="512x512"
-            href="/android-chrome-512x512.png"
-          />
-
-          {/* Web Manifest for PWA */}
-          <link rel="manifest" href="/site.webmanifest" />
-        </head>
+      <html lang="en" suppressHydrationWarning>
         <body
           className={`${roboto.variable} antialiased w-full bg-stone-50 text-stone-950`}
         >

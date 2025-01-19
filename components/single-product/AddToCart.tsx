@@ -1,26 +1,35 @@
-import { cn } from "@/lib/utils";
-import { Button } from "../ui/button";
-import { BsHandbag } from "react-icons/bs";
+"use client";
 
-const AddToCart = ({
-  size = "default",
-  className,
-}: {
-  size?: "sm" | "lg" | "default" | "icon";
-  className?: string;
-}) => {
+import FormContainer from "../form/FormContainer";
+import { AddToCartSignInButton, AddToCartSubmitButton } from "../form/Buttons";
+import { addToCartAction } from "@/actions/action-cart";
+import FormInput from "../form/FormInput";
+import ProductAmountSelect from "../cart/ProductAmountSelect";
+// import { useAuthContext } from "@/hooks/useAuthContext";
+import { useSession } from "next-auth/react";
+
+const AddToCart = ({ productId }: { productId: string }) => {
+  // const { user } = useAuthContext();
+  const session = useSession();
+  const user = session.data?.user;
+  // const pathName = usePathname();
+
   return (
-    <Button
-      variant="default"
-      size={size}
-      className={cn(
-        " bg-brand-500 hover:bg-brand-600 transition-colors duration-300 space-x-2 rounded-sm",
-        className
+    <>
+      {user ? (
+        <FormContainer
+          action={addToCartAction}
+          schemaName="AddToCartSchema"
+          invalidateQuery="numItemsInCart"
+        >
+          <ProductAmountSelect name="amount" />
+          <FormInput type="hidden" name="productId" value={productId} />
+          <AddToCartSubmitButton/>
+        </FormContainer>
+      ) : (
+        <AddToCartSignInButton />
       )}
-    >
-      <span>Add to cart</span>
-      <BsHandbag />
-    </Button>
+    </>
   );
 };
 export default AddToCart;

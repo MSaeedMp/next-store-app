@@ -1,5 +1,4 @@
 "use client";
-import Container from "../global/Container";
 import CustomTriggerMenu from "../sidebar/CustomTriggerMenu";
 import CartButton from "./CartButton";
 import Logo from "./Logo";
@@ -10,6 +9,7 @@ import { useSearchContext } from "@/hooks/useSearchContext";
 import { cn } from "@/lib/utils";
 import { Suspense, useEffect, useState } from "react";
 import MobileNavbar from "./MobileNavbar";
+import Container from "../global/Container";
 
 const Header = () => {
   const { isFocused, searchQuery, isMobileSearching, isMobile } =
@@ -33,11 +33,7 @@ const Header = () => {
   }, [lastScrollY]);
 
   return (
-    <Container
-      className={cn(
-        "w-full bg-stone-900 fixed left-1/2 -translate-x-1/2 top-0 z-40"
-      )}
-    >
+    <Container className="bg-stone-900 fixed left-1/2 -translate-x-1/2 top-0 z-40 w-full">
       <div
         className={cn(
           "flex items-center justify-between h-16 transition-height duration-300",
@@ -77,7 +73,6 @@ const Header = () => {
           <MobileNavbar />
         </div>
       )}
-      {/* <Navbar className="pl-0" /> */}
     </Container>
   );
 };

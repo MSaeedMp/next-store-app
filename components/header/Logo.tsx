@@ -7,7 +7,7 @@ const Logo = ({
   onClick,
   className,
 }: {
-  type: string;
+  type: "dark" | "light";
   className?: string;
   onClick?: () => void;
 }) => {
@@ -19,7 +19,7 @@ const Logo = ({
       )}
     >
       <Link href="/" onClick={onClick}>
-        <div className=" relative lg:h-[50px] lg:w-[200px] sm:h-[45px] sm:w-[180px] h-[38px] w-[148px]">
+        <div className=" relative lg:h-[45px] lg:w-[180px] sm:h-[45px] sm:w-[180px] h-[38px] w-[148px]">
           <Image
             src={`/logo-${type}.png`}
             alt="next store logo"

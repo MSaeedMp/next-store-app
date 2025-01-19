@@ -74,7 +74,7 @@ const Footer = () => {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-      <div className="flex-col md:border-t md:border-stone-500 pt-4 md:flex-row flex md:justify-between items-center gap-4 mt-10 md:mt-40">
+      <div className="flex-col md:border-t md:border-stone-500 pt-4 md:flex-row flex md:justify-between items-center gap-4 mt-10 md:mt-20">
         <div className=" pt-4 md:pr-8 md:pt-0 flex gap-4 items-center md:self-start justify-center">
           <a
             href="https://instagram.com"

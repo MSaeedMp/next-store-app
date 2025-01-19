@@ -1,7 +1,3 @@
-"use client";
-import { fetchSingleProduct } from "@/lib/api";
-import { useQuery } from "@tanstack/react-query";
-import ErrorContainer from "../global/ErrorContainer";
 import BreadCrumpContainer from "./BreadCrumpContainer";
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
@@ -10,24 +6,13 @@ import Price from "./Price";
 import { formatCurrency } from "@/utils/format";
 import { Separator } from "../ui/separator";
 import AddToCart from "./AddToCart";
-import LoadingSingleProduct from "../global/LoadingSingleProduct";
+import { Product } from "@prisma/client";
+import { fetchOveralRating } from "@/actions/action-review";
 
-const SingleProductContainer = ({ productId }: { productId: string }) => {
-  const {
-    data: product,
-    error,
-    isLoading,
-  } = useQuery({
-    queryFn: () => fetchSingleProduct(productId),
-    queryKey: ["singleProduct", productId],
-  });
-
-  if (isLoading) return <LoadingSingleProduct />;
-  if (!product || error) return <ErrorContainer />;
-
+const SingleProductContainer = async ({ product }: { product: Product }) => {
+  const productId = product.id;
+  const { rating, count } = await fetchOveralRating(productId);
   const { name, image, company, description, price } = product;
-  const rating = 4.2;
-  const count = 25;
 
   return (
     <>
@@ -39,8 +24,8 @@ const SingleProductContainer = ({ productId }: { productId: string }) => {
             alt={name}
             fill
             sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
-            priority
             className="object-cover rounded w-full"
+            priority
           />
         </div>
         <div className="flex flex-col gap-4 lg:pt-0 pt-5">
@@ -62,13 +47,13 @@ const SingleProductContainer = ({ productId }: { productId: string }) => {
           </h3>
           <Price
             className="bg-brand-100 border border-stone-400 rounded py-2 px-4 self-start text-stone-950"
-            amount={formatCurrency(price)}
+            amount={formatCurrency(price.toNumber())}
           />
           <div className="space-y-2 ">
             <h4 className="font-semibold">About this item: </h4>
             <p className="leading-8">{description}</p>
           </div>
-          <AddToCart className="lg:self-start mt-10 " size="lg" />
+          <AddToCart productId={productId} />
         </div>
       </div>
     </>

@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html body[data-scroll-locked] {
+  overflow: visible !important;
+  margin-right: 0 !important;
+}
+
 body {
   font-family: var(--font-roboto), Arial, Helvetica, sans-serif;
   line-height: 1.8;
@@ -9,6 +14,7 @@ body {
 * {
   scroll-behavior: smooth;
 }
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -94,6 +100,15 @@ body {
   .placeholder-typing::placeholder {
     @apply animate-typing;
   }
+  .spinner {
+    margin: 3.2rem auto 1.6rem;
+    width: 60px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid theme("colors.stone.900");
+    border-right-color: theme("colors.stone.200");
+    animation: rotate 1s infinite linear;
+  }
 }
 @layer utilities {
   /* Chrome, Safari and Opera */
@@ -105,6 +120,4 @@ body {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
-
-  
 }

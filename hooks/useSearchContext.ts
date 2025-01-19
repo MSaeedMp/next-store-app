@@ -4,7 +4,9 @@ import { useContext } from "react";
 export const useSearchContext = () => {
   const context = useContext(SearchContext);
   if (!context)
-    throw new Error("useSearchContext must be used within a ContextProvider");
+    throw new Error(
+      "useSearchContext must be used within a SearchContextProvider"
+    );
 
   return context;
 };
