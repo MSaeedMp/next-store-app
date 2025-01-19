@@ -1,8 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  // trailingSlash: false,
   images: {
     remotePatterns: [
       {
@@ -22,7 +20,6 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        // matching all API routes
         source: "/api/:path*",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
@@ -41,15 +38,5 @@ const nextConfig: NextConfig = {
     ];
   },
 };
-// module.exports = {
-//   async rewrites() {
-//       return [
-//         {
-//           source: '/api/:path*',
-//           destination: 'https://api.example.com/:path*',
-//         },
-//       ]
-//     },
-// };
 
 export default nextConfig;
