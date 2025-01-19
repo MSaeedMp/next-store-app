@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client/edge"; // Use the edge version for Accelerate
-import { withAccelerate } from "@prisma/extension-accelerate";
+// import { withAccelerate } from "@prisma/extension-accelerate";
 
 // Create a Prisma Client singleton with Accelerate extension
 const prismaClientSingleton = () => {
