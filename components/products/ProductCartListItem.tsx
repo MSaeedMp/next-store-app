@@ -15,7 +15,7 @@ const ProductCartListItem = ({ product }: { product: Product }) => {
     <article key={productId} className="realtive group">
       <Link href={`/products/${productId}`}>
         <Card className="transform group-hover:shadow-xl transition-shadow duration-500 rounded-none border-none shadow-md">
-          <CardContent className="grid md:grid-cols-[auto_1fr_auto] md:gap-8 p-4 md:p-5">
+          <CardContent className="grid md:grid-cols-[auto_1fr_auto] md:gap-8 p-0">
             <div className="relative group h-64 md:h-48 md:w-48 overflow-hidden rounded-none">
               <Image
                 src={image}
@@ -26,7 +26,7 @@ const ProductCartListItem = ({ product }: { product: Product }) => {
                 className="w-full object-cover object-center rounded-none transform group-hover:scale-110 transition-transform duration-500"
               />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col py-4 md:py-5 px-6 md:px-0">
               <h2 className="text-xl capitalize mt-4 md:mt-0">{name}</h2>
               <h4 className="text-muted-foreground">{company}</h4>
               <div className="mt-auto"></div>
@@ -38,7 +38,7 @@ const ProductCartListItem = ({ product }: { product: Product }) => {
             <div className="flex flex-col justify-between md:gap-0 gap-4">
               <Price
                 amount={eurosAmount}
-                className="md:ml-auto self-start md:self-end"
+                className="md:ml-auto self-start md:self-end p-6"
               />
             </div>
           </CardContent>

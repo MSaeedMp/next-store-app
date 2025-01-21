@@ -3,6 +3,10 @@ import authConfig from "./lib/auth.config";
 import { NextRequest, NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
 
+const secret = process.env.AUTH_SECRET;
+const node_env = process.env.NODE_ENV;
+const { auth } = NextAuth(authConfig);
+
 const redirectAndSetCookie = (req: NextRequest, redirectTo: string) => {
   const res = NextResponse.redirect(new URL(redirectTo, req.url));
   res.cookies.set("forwardPathname", req.nextUrl.pathname, {
@@ -12,16 +16,26 @@ const redirectAndSetCookie = (req: NextRequest, redirectTo: string) => {
   return res;
 };
 
-const secret = process.env.AUTH_SECRET;
+const fetchToken = async (req: NextRequest) => {
+  let token;
+  if (node_env === "production") {
+    token = await getToken({
+      req,
+      secret,
+      cookieName: "__Secure-authjs.session-token",
+    });
+  } else {
+    token = await getToken({
+      req,
+      secret,
+    });
+  }
+  return token;
+};
 
-const { auth } = NextAuth(authConfig);
 export default auth(async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-  const token = await getToken({
-    req,
-    secret,
-    cookieName: "__Secure-authjs.session-token",
-  });
+  const token = await fetchToken(req);
   const role = token?.role;
 
   // Public routes logic

@@ -12,15 +12,12 @@ const CartItemsList = ({
   cartItems: CartItemWithProducts[];
 }) => {
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       {cartItems.map((cartItem) => {
         const { id, amount } = cartItem;
         const { image, name, company, price, id: productId } = cartItem.product;
         return (
-          <Card
-            key={id}
-            className="grid grid-cols-1 md:grid-cols-4 rounded-sm "
-          >
+          <Card key={id} className="grid grid-cols-1 md:grid-cols-4 rounded-none border-none shadow-md">
             <CartItemImage image={image} name={name} />
             <div className="md:col-span-3 flex flex-col md:flex-row md:justify-between p-6">
               <CartItemHeading
@@ -28,10 +25,12 @@ const CartItemsList = ({
                 company={company}
                 name={name}
               />
-              <CartItemAmount amount={amount} cartItemId={id} />
+              <div className="flex items-center md:flex-col md:items-start md:ml-auto">
+                <CartItemAmount amount={amount} cartItemId={id} />
+              </div>
               <Price
                 amount={formatCurrency(Number(price))}
-                className="flex md:items-start items-center text-lg font-medium ml-auto "
+                className="flex md:items-start items-center text-lg font-medium md:ml-4 ml-auto"
               />
             </div>
           </Card>

@@ -41,14 +41,14 @@ const ProductAmountChange = ({
   };
 
   return (
-    <div className="mb-2 max-w-[100px]">
+    <div className="mb-2">
       <span className="capitalize text-sm">{label || name}</span>
       <Select
         defaultValue={amount.toString()}
         onValueChange={(value) => handleAmountChange(value)}
         disabled={isLoading ? true : false}
       >
-        <SelectTrigger className="w-[100px]">
+        <SelectTrigger className="w-[65px]">
           <SelectValue placeholder={amount.toString()} />
           <SelectValue />
         </SelectTrigger>

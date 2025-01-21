@@ -30,10 +30,10 @@ const Navbar = () => {
       {navItems.map((item) => (
         <li key={item.title} className="h-full">
           <Button
-            variant={"link"}
+            variant="link"
             className={cn(
-              "text-base text-stone-200 py-0 px-6 underline-offset-8 decoration-4 h-full font-[600]",
-              item.url === pathname && "underline"
+              "text-base text-stone-400 py-0 px-6 hover:no-underline hover:text-stone-100 h-full font-[600]",
+              item.url === pathname && "text-stone-100"
             )}
             asChild
           >

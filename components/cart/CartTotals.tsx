@@ -11,12 +11,12 @@ const CartTotals = ({ cart }: { cart: Cart }) => {
 
   return (
     <div>
-      <Card className="p-8 rounded-sm">
+      <Card className="p-8 rounded-none border-none shadow-md">
         <CartTotalRow label="Subtotal" amount={cartTotal} />
         <CartTotalRow label="Shipping" amount={shipping} />
         <CartTotalRow label="Tax" amount={tax} />
         <CardTitle className="mt-8">
-          <CartTotalRow label="OrderTotal" amount={orderTotal} />
+          <CartTotalRow label="OrderTotal" amount={orderTotal} lastRow />
         </CardTitle>
       </Card>
       <FormContainer action={createOrderAction}>

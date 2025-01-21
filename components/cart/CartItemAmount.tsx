@@ -12,7 +12,7 @@ const CartItemAmount = ({
   cartItemId: string;
 }) => {
   return (
-    <div className="flex items-center md:flex-col md:items-start">
+    <>
       <ProductAmountChange
         name="amount"
         amount={amount}
@@ -27,7 +27,7 @@ const CartItemAmount = ({
         <FormInput type="hidden" name="id" value={cartItemId} />
         <SubmitButton size="sm" text="remove" />
       </FormContainer>
-    </div>
+    </>
   );
 };
 export default CartItemAmount;

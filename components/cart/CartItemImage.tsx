@@ -9,7 +9,7 @@ const CartItemImage = ({ image, name }: { image: string; name: string }) => {
         fill
         sizes="(max-width:768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         priority
-        className="w-full rounded-l-sm rounded-r-none object-cover"
+        className="w-full rounded-none object-cover"
       />
     </div>
   );
