@@ -1,10 +1,13 @@
+import Section from "@/components/global/Section";
+import OrderCard from "@/components/order/OrderCard";
 import OrderTable from "@/components/order/OrderTable";
 
 const OrdersPage = () => {
   return (
-    <section className="pt-36 sm:pt-28 min-h-[calc(100vh-34rem)]">
+    <Section>
+      <OrderCard />
       <OrderTable />
-    </section>
+    </Section>
   );
 };
 

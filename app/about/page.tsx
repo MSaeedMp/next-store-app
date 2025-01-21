@@ -7,7 +7,7 @@ const AboutPage = async () => {
   return (
     <Section>
       <div className="grid md:grid-cols-2 relative md:h-[800px] w-full">
-        <h1 className="lg:text-5xl text-2xl md:text-4xl bg-accent-800 text-primary-100 xl:p-8 md:p-6 p-4 inline-block absolute -left-4 sm:-left-6 top-[440px] md:left-1/2 md:top-10 md:-translate-x-16 shadow-md z-10 bg-stone-900 text-stone-100 font-light tracking-wider whitespace-nowrap">
+        <h1 className="lg:text-5xl text-2xl md:text-4xl bg-accent-800 text-primary-100 xl:p-8 md:p-6 p-4 inline-block absolute -left-4 sm:-left-6 top-[440px] md:left-1/2 md:top-10 md:-translate-x-16 shadow-md z-10 bg-stone-900 text-stone-100 font-semibold tracking-wider whitespace-nowrap">
           About Next Store
         </h1>
         <div className="relative overflow-hidden mx-auto h-[400px] lg:h-[800px] w-full">

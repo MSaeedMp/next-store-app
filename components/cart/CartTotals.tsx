@@ -19,7 +19,11 @@ const CartTotals = ({ cart }: { cart: Cart }) => {
           <CartTotalRow label="OrderTotal" amount={orderTotal} lastRow />
         </CardTitle>
       </Card>
-      <FormContainer action={createOrderAction}>
+      <FormContainer
+        action={createOrderAction}
+        redirectPath="/orders"
+        invalidateQuery="numItemsInCart"
+      >
         <SubmitButton text="Place order" className="w-full mt-6" />
       </FormContainer>
     </div>

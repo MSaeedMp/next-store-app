@@ -5,6 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { fetchAllProducts } from "@/actions/action-product";
+import { memoize } from "nextjs-better-unstable-cache";
+
+const fetchCachedAllProducts = memoize(fetchAllProducts, {
+  duration: 3600,
+  revalidateTags: (search) => ["allProducts", search as string],
+});
 
 async function ProductsContainer({
   layout,
@@ -13,7 +19,8 @@ async function ProductsContainer({
   layout: string;
   search: string;
 }) {
-  const products = await fetchAllProducts(search);
+  // const products = await fetchAllProducts(search);
+  const products = await fetchCachedAllProducts(search);
   const totalProducts = products.length;
   const searchTerm = search ? `&search=${search}` : "";
   return (

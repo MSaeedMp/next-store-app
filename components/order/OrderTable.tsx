@@ -12,7 +12,6 @@ import { formatCurrency, formatDate } from "@/utils/format";
 
 const OrderTable = async () => {
   const orders = await fetchUserOrders();
-  console.log(orders)
   return (
     <Table>
       <TableCaption> Total orders: {orders.length}</TableCaption>

@@ -18,6 +18,7 @@ import { usePathname } from "next/navigation";
 // import { useAuthContext } from "@/hooks/useAuthContext";
 import { setForwardPathCookie } from "@/lib/utils";
 import { useSession } from "next-auth/react";
+import { BsBox2Fill } from "react-icons/bs";
 
 const items = [
   {
@@ -44,6 +45,13 @@ const items = [
     icon: HiShoppingCart,
     accessBy: ["user", "admin"],
   },
+  {
+    title: "Orders",
+    url: "/orders",
+    icon: BsBox2Fill,
+    accessBy: ["user", "admin"],
+  },
+
   {
     title: "About us",
     url: "/about",
@@ -75,7 +83,7 @@ const SidebarList = () => {
   };
 
   return (
-    <SidebarMenu>
+    <SidebarMenu className="pl-6 sm:pl-0">
       {!user?.role ? (
         <SignInTrigger onClick={handleSignin} />
       ) : (

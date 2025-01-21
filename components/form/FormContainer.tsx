@@ -77,10 +77,12 @@ const FormContainer = <T extends FieldValues>({
       if (newSession) refresh();
       if (redirectPath) router.push(redirectPath);
       if (redirectReloadPath) window.location.assign(redirectReloadPath);
-      if (invalidateQuery)
+      if (invalidateQuery) {
+        console.log("revalidate");
         queryClient.invalidateQueries([
           invalidateQuery,
         ] as InvalidateQueryFilters);
+      }
     }
     if (result && result.status === "error") {
       // toast({

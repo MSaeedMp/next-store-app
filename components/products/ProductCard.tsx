@@ -9,7 +9,7 @@ import Price from "../single-product/Price";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const { id: productId, image, name, price, company } = product;
-  const eurosAmount = formatCurrency(price.toNumber());
+  const eurosAmount = formatCurrency(Number(price));
 
   return (
     <article key={productId} className="group relative">
