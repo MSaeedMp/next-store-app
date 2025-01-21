@@ -13,7 +13,7 @@ const CartPage = async () => {
   const previousCart = await fetchOrCreateCart({ userId: user.userId });
   const { currentCart, cartItems } = await updateCart(previousCart);
   const isEmpty = cartItems.length === 0;
-
+  
   return (
     <Section>
       <SectionTitle>Shopping Cart</SectionTitle>

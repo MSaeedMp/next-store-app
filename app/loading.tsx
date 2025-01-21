@@ -1,10 +1,11 @@
+import Section from "@/components/global/Section";
 import Spinner from "@/components/global/Spinner";
 
 const Loading = () => {
   return (
-    <div className="pt-36 sm:pt-28 min-h-[calc(100vh-34rem)]">
+    <Section>
       <Spinner />
-    </div>
+    </Section>
   );
 };
 export default Loading;

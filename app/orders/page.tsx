@@ -1,12 +1,14 @@
 import Section from "@/components/global/Section";
-import OrderCard from "@/components/order/OrderCard";
+import SectionTitle from "@/components/global/SectionTitle";
 import OrderTable from "@/components/order/OrderTable";
 
 const OrdersPage = () => {
   return (
     <Section>
-      <OrderCard />
-      <OrderTable />
+      <SectionTitle className="mb-8">Your orders</SectionTitle>
+      <div className="p-10 bg-white shadow-md">
+        <OrderTable />
+      </div>
     </Section>
   );
 };

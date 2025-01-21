@@ -17,7 +17,7 @@ const ProductScrollArea = async ({ category }: { category: string }) => {
     case "all":
       products = await fetchAllProducts();
       break;
-    case "featuerd":
+    case "featured":
       products = await fetchFeaturedProducts();
       break;
     case "new":
