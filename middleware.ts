@@ -19,7 +19,7 @@ const secret = process.env.AUTH_SECRET;
 const { auth } = NextAuth(authConfig);
 export default auth(async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-  const token = await getToken({ req, secret });
+  const token = await getToken({ req, secret, secureCookie: true });
   const role = token?.role;
 
   // Public routes logic
