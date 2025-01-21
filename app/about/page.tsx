@@ -17,6 +17,7 @@ const AboutPage = async () => {
             alt="about us"
             sizes="(max-width:768px) 100vw,(max-width:1200px) 50vw, 33vw "
             priority
+            placeholder="blur"
             className="object-cover object-center rounded-sm h-full"
           />
         </div>

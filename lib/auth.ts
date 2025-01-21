@@ -6,9 +6,6 @@ import bcryptjs from "bcryptjs";
 import { generateRandomHex } from "@/utils/helper";
 import { AuthUserType } from "@/utils/types";
 import { createUserAction, findUserByEmail } from "@/actions/action-user";
-// import { PrismaAdapter } from "@auth/prisma-adapter";
-// import prisma from "@/utils/db";
-// import authConfig from "./auth.config";
 import Google from "next-auth/providers/google";
 import Github from "next-auth/providers/github";
 
