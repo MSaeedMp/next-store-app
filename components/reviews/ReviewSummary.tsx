@@ -10,7 +10,7 @@ const ReviewSummary = async ({ productId }: { productId: string }) => {
     fetchOveralRating(productId),
   ]);
   return (
-    <div className="bg-white px-10 py-8 rounded-sm shadow-sm w-full border border-stone-200">
+    <div className="bg-white px-6 md:px-10 py-8 rounded-sm shadow-sm w-full border border-stone-200">
       <div className="mb-4">
         <h4 className="text-lg font-semibold">Customer reviews</h4>
         <div className="flex items-center gap-2">

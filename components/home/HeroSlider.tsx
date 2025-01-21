@@ -42,7 +42,7 @@ const HeroSlider = () => {
   }, []);
 
   return (
-    <div className="absolute  left-0 sm:top-16 top-28 w-full">
+    <div className="absolute left-0 sm:top-16 top-28 w-full">
       <div className=" relative w-full min-h-[430px] sm:h-[700px] lg:h-[850px]">
         {images.map((img) => (
           <Image

@@ -25,7 +25,7 @@ const ProductAmountSelect = ({
   }, [getValues, name, setValue]);
 
   return (
-    <div className="mb-2 max-w-[100px]">
+    <div className="max-w-[100px]">
       <Label htmlFor={name} className="capitalize">
         {label || name}
       </Label>

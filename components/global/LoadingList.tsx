@@ -27,7 +27,6 @@ const LoadingList = ({ className }: { className?: string }) => {
     <div className={cn("space-y-4", className)}>
       <LoadingProduct />
       <LoadingProduct />
-      <LoadingProduct />
     </div>
   );
 };

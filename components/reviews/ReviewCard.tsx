@@ -39,7 +39,7 @@ const ReviewCard = ({
               <Rating rating={rating} />
             </div>
             <span className="text-xs text-muted-foreground whitespace-nowrap">
-              Created on {formatDate(createdAt)}
+              {formatDate(createdAt)}
             </span>
           </div>
         </div>

@@ -3,6 +3,7 @@ import LoadingList from "@/components/global/LoadingList";
 import SectionTitle from "@/components/global/SectionTitle";
 import ProductsContainer from "@/components/products/ProductsContainer";
 import { Suspense } from "react";
+import Section from "@/components/global/Section";
 
 const ProductsPage = async ({
   searchParams,
@@ -14,14 +15,14 @@ const ProductsPage = async ({
   const search = params.search || "";
 
   return (
-    <section className="pt-36 sm:pt-28">
+    <Section>
       <SectionTitle className="mb-8">Products</SectionTitle>
       <Suspense
         fallback={layout === "grid" ? <LoadingGrid /> : <LoadingList />}
       >
         <ProductsContainer layout={layout} search={search} />
       </Suspense>
-    </section>
+    </Section>
   );
 };
 

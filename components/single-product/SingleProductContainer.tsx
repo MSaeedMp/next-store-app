@@ -7,29 +7,40 @@ import { formatCurrency } from "@/utils/format";
 import { Separator } from "../ui/separator";
 import AddToCart from "./AddToCart";
 import { Product } from "@prisma/client";
-import { fetchOveralRating } from "@/actions/action-review";
 
-const SingleProductContainer = async ({ product }: { product: Product }) => {
+type SingleProductContainerProps = {
+  product: Product;
+  overalRating: {
+    rating: string | number;
+    count: number;
+  };
+};
+
+const SingleProductContainer = async ({
+  product,
+  overalRating,
+}: SingleProductContainerProps) => {
   const productId = product.id;
-  const { rating, count } = await fetchOveralRating(productId);
+  const { rating, count } = overalRating;
   const { name, image, company, description, price } = product;
 
   return (
     <>
       <BreadCrumpContainer name={name} />
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 mt-10">
-        <div className="relative min-h-[500px] w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-2 mt-10  bg-white border border-stone-200 rounded-none">
+        <div className="relative min-h-[350px] w-full">
           <Image
             src={image}
             alt={name}
             fill
+            quality={80}
             sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
-            className="object-cover rounded w-full"
+            className="object-cover rounded-none h-full w-full"
             priority
           />
         </div>
-        <div className="flex flex-col gap-4 lg:pt-0 pt-5">
-          <div className="flex items-center  justify-between gap-5">
+        <div className="flex flex-col gap-4 px-6 py-6 lg:px-6 lg:py-10 ">
+          <div className="flex items-center  justify-between gap-5 ">
             <h1 className="md:text-3xl text-2xl font-semibold capitalize">
               {name}
             </h1>
@@ -42,12 +53,12 @@ const SingleProductContainer = async ({ product }: { product: Product }) => {
             </span>
           </div>
           <Separator />
-          <h3 className="capitalize text-foreground text-lg md:text-xl mb-4">
+          <h3 className="capitalize text-foreground text-lg md:text-xl mb-2 md:mb-4">
             {company}
           </h3>
           <Price
             className="bg-brand-100 border border-stone-400 rounded py-2 px-4 self-start text-stone-950"
-            amount={formatCurrency(price.toNumber())}
+            amount={formatCurrency(Number(price))}
           />
           <div className="space-y-2 ">
             <h4 className="font-semibold">About this item: </h4>

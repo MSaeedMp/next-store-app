@@ -5,6 +5,7 @@ import CartTotals from "@/components/cart/CartTotals";
 import ErrorContainer from "@/components/global/ErrorContainer";
 import SectionTitle from "@/components/global/SectionTitle";
 import { redirect } from "next/navigation";
+import Section from "@/components/global/Section";
 
 const CartPage = async () => {
   const user = await getAuthUser();
@@ -14,7 +15,7 @@ const CartPage = async () => {
   const isEmpty = cartItems.length === 0;
 
   return (
-    <section className="pt-36 sm:pt-28 min-h-[calc(100vh-34rem)]">
+    <Section>
       <SectionTitle>Shopping Cart</SectionTitle>
       {isEmpty ? (
         <ErrorContainer
@@ -31,7 +32,7 @@ const CartPage = async () => {
           </div>
         </div>
       )}
-    </section>
+    </Section>
   );
 };
 

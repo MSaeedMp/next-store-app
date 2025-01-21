@@ -5,13 +5,11 @@ import { HiShoppingCart } from "react-icons/hi2";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCartItems } from "@/actions/action-cart";
 import { useSession } from "next-auth/react";
-// import { useAuthContext } from "@/hooks/useAuthContext";
 
 const CartButton = () => {
-  // const { user } = useAuthContext();
   const session = useSession();
   const user = session.data?.user;
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["numItemsInCart", user],
     queryFn: () => fetchCartItems(),
   });
@@ -25,8 +23,8 @@ const CartButton = () => {
     >
       <Link href="/cart" className="p-6">
         <HiShoppingCart className="!w-6 !h-6 text-stone-100" />
-        {user && (
-          <span className="absolute z-10 -top-0 -right-2 bg-white rounded-full w-4 h-4 p-2.5 text-stone-950 text-center flex items-center justify-center text-xs font-[900]">
+        {user && !isLoading && (
+          <span className="absolute z-10 -top-0 -right-2 bg-stone-100 rounded-full w-4 h-4 p-2.5 text-stone-950 text-center flex items-center justify-center text-xs font-[900]">
             {data}
           </span>
         )}

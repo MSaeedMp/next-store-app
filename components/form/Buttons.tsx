@@ -55,11 +55,7 @@ export function SubmitButton({
   );
 }
 
-export function AddToCartSignInButton({
-  size = "lg",
-}: {
-  size?: btnSize;
-}) {
+export function AddToCartSignInButton({ size = "lg" }: { size?: btnSize }) {
   const pathname = usePathname();
   return (
     <Link href="/auth/signin">
@@ -82,8 +78,10 @@ export function AddToCartSignInButton({
 
 export function AddToCartSubmitButton({
   size = "lg",
+  className,
 }: {
   size?: btnSize;
+  className?: string;
 }) {
   const {
     formState: { isSubmitting },
@@ -94,7 +92,8 @@ export function AddToCartSubmitButton({
       disabled={isSubmitting}
       size={size}
       className={cn(
-        "bg-brand-500 hover:bg-brand-600 transition-colors duration-300 space-x-2 rounded-sm"
+        "bg-brand-500 hover:bg-brand-600 transition-colors duration-300 space-x-2 rounded-sm",
+        className
       )}
     >
       {isSubmitting ? (
@@ -245,7 +244,7 @@ export const CardSubmitButton = ({
       type="submit"
       size="icon"
       variant="ghost"
-      className="cursor-pointer p-2 hover:bg-stone-900 bg-stone-900 bg-opacity-70 transition-color duration-500 text-white hover:text-white"
+      className="cursor-pointer p-2 hover:bg-stone-900 bg-stone-600 bg-opacity-80 transition-color duration-500 text-white hover:text-white"
       onClick={onClick}
     >
       {isFavorite ? <FaHeart /> : <FaRegHeart />}

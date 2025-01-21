@@ -101,13 +101,22 @@ body {
     @apply animate-typing;
   }
   .spinner {
+    display: flex;
     margin: 3.2rem auto 1.6rem;
     width: 60px;
-    aspect-ratio: 1;
+    height: 60px; /* For precise control, avoid relying solely on aspect-ratio */
     border-radius: 50%;
-    border: 8px solid theme("colors.stone.900");
-    border-right-color: theme("colors.stone.200");
-    animation: rotate 1s infinite linear;
+    border: 8px solid transparent; /* Transparent border for a cleaner look */
+    border-top-color: var(--tw-color-stone-200); /* Light color */
+    border-left-color: var(--tw-color-stone-200); /* Light color */
+    border-right-color: var(--tw-color-stone-900); /* Dark color for contrast */
+    animation: spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite; /* Modern easing */
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(1turn); /* Rotate 360 degrees */
+    }
   }
 }
 @layer utilities {

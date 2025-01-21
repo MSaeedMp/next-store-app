@@ -1,6 +1,4 @@
-import NextAuth, { AuthError, NextAuthConfig, Session } from "next-auth";
-import Google from "next-auth/providers/google";
-import Github from "next-auth/providers/github";
+import NextAuth, { AuthError, Session } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { DefaultSession } from "next-auth";
 import { User } from "@prisma/client";
@@ -8,12 +6,24 @@ import bcryptjs from "bcryptjs";
 import { generateRandomHex } from "@/utils/helper";
 import { AuthUserType } from "@/utils/types";
 import { createUserAction, findUserByEmail } from "@/actions/action-user";
+// import { PrismaAdapter } from "@auth/prisma-adapter";
+// import prisma from "@/utils/db";
+// import authConfig from "./auth.config";
+import Google from "next-auth/providers/google";
+import Github from "next-auth/providers/github";
 
 // Fixing NextAuth v5 bug
 class customError extends AuthError {
   constructor(message: string) {
     super();
     this.message = message;
+  }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    userId?: string;
+    role?: string;
   }
 }
 
@@ -57,13 +67,15 @@ const handleCredentialSignIn = async (
   return userOnDB;
 };
 
-const authConfig: NextAuthConfig = {
+export const { auth, handlers, signIn, signOut } = NextAuth({
   session: {
     strategy: "jwt",
   },
+  // adapter: PrismaAdapter(prisma),
+  // ...authConfig,
   providers: [
-    Google,
     Github,
+    Google,
     CredentialsProvider({
       name: "Email and Password",
       credentials: {
@@ -120,19 +132,19 @@ const authConfig: NextAuthConfig = {
       }
     },
 
-    // Attaching user id to the session
-    async session({ session }: { session: Session }): Promise<Session> {
-      const user = await findUserByEmail(session.user.email as string);
-      session.user.userId = user?.id;
-      session.user.role = user?.role;
+    async jwt({ token, user }) {
+      if (user) {
+        const userOnDB = await findUserByEmail(user.email as string);
+        token.userId = userOnDB?.id;
+        token.role = userOnDB?.role;
+      }
+      return token;
+    },
+
+    async session({ session, token }): Promise<Session> {
+      session.user.userId = token.userId;
+      session.user.role = token.role;
       return session;
     },
   },
-};
-
-export const {
-  auth,
-  signIn,
-  signOut,
-  handlers: { GET, POST },
-} = NextAuth(authConfig);
+});

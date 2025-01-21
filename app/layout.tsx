@@ -1,17 +1,14 @@
-import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
 import "./globals.css";
-import Container from "@/components/global/Container";
 import AppSidebar from "@/components/sidebar/AppSidebar";
-import Wrapper from "@/components/global/Wrapper";
 import Providers from "./providers";
-import Footer from "@/components/global/Footer";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
-import Header from "@/components/header/Header";
+import { LayoutProvider } from "@/components/layout/LayoutProvider";
 
-const roboto = Roboto({
+const font = Inter({
   subsets: ["latin"],
-  variable: "--font-roboto",
+  variable: "--font-inter",
   display: "swap",
   weight: ["100", "300", "400", "500", "700", "900"],
   preload: true,
@@ -23,13 +20,7 @@ export const metadata: Metadata = {
     default: "Next Store",
   },
   description: "A netify app built with Next.js",
-  keywords: [
-    "e-commerce",
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "Type script",
-  ],
+  keywords: ["e-commerce", "Next.js", "React", "Tailwind CSS", "Type script"],
   authors: [
     {
       name: "M. Saeed Mafipour",
@@ -52,15 +43,11 @@ export default function RootLayout({
     <SessionProvider>
       <html lang="en" suppressHydrationWarning>
         <body
-          className={`${roboto.variable} antialiased w-full bg-stone-50 text-stone-950`}
+          className={`${font.variable} antialiased w-full bg-stone-50 text-stone-950`}
         >
           <Providers>
             <AppSidebar />
-            <Wrapper className="shadow-lg">
-              <Header />
-              <Container>{children}</Container>
-              <Footer />
-            </Wrapper>
+            <LayoutProvider>{children}</LayoutProvider>
           </Providers>
         </body>
       </html>

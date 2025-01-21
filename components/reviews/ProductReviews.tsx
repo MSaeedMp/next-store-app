@@ -1,16 +1,19 @@
 import { Review } from "@prisma/client";
-import {
-  fetchProductReviews,
-  findExistingReview,
-} from "@/actions/action-review";
 import { Separator } from "../ui/separator";
 import ReviewsContainer from "./ReviewsContainer";
 import ReviewSummary from "./ReviewSummary";
 
-const ProductReviews = async ({ productId }: { productId: string }) => {
-  const reviews: Review[] = await fetchProductReviews(productId);
-  const isReviewed = !!(await findExistingReview(productId));
+type ProductReviewsProps = {
+  productId: string;
+  reviews: Review[];
+  isReviewed: boolean;
+};
 
+const ProductReviews = async ({
+  productId,
+  reviews,
+  isReviewed,
+}: ProductReviewsProps) => {
   return (
     <div>
       <Separator className="my-10" />
