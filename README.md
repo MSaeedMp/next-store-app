@@ -32,7 +32,7 @@ Ensure you have **Node.js** and a package manager installed (npm, yarn, pnpm, or
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/yourusername/nextstore.git
+git clone https://github.com/MSaeedMp/next-store-app
 cd nextstore
 npm install  # or yarn install or pnpm install or bun install
 ```
