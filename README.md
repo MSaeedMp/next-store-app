@@ -33,6 +33,6 @@ Clone the repository and install dependencies:
 
 ```bash
 git clone https://github.com/MSaeedMp/next-store-app.git
-cd nextstore
+cd next-store-app
 npm install  # or yarn install or pnpm install or bun install
 ```
