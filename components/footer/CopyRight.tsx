@@ -7,9 +7,6 @@ const CopyRight = () => {
       <span className="block mt-2">
         Designed with passion by M. Saeed Mafipour.
       </span>
-      <span className="block mt-2">
-        For inquiries or collaborations, feel free to reach out to
-      </span>
       <a
         href="mailto:saeed.mafipour@gmail.com"
         className="underline text-stone-400 w-full hover:text-stone-200 flex md:justify-normal justify-center items-center gap-2 mt-2"

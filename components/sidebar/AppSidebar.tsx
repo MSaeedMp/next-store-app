@@ -25,7 +25,8 @@ const AppSidebar = async () => {
             <CustomTriggerClose className="p-2 text-foreground text-stone-200" />
           </SidebarGroupLabel>
           <SidebarList />
-          <SidebarGroupContent></SidebarGroupContent>
+          <SidebarGroupContent>
+          </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
       <SidebarRail />

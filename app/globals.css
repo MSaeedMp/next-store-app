@@ -8,7 +8,7 @@ html body[data-scroll-locked] {
 }
 
 body {
-  font-family: var(--font-roboto), Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
   line-height: 1.8;
 }
 * {

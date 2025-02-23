@@ -14,6 +14,7 @@ type FormInputProps = {
   placeholder?: string;
   disabled?: boolean;
   autocomplete?: string;
+  disablePaste?: boolean;
 };
 
 const FormInput = ({
@@ -25,6 +26,7 @@ const FormInput = ({
   placeholder,
   disabled,
   autocomplete,
+  disablePaste = false,
 }: FormInputProps) => {
   const {
     register,
@@ -48,6 +50,7 @@ const FormInput = ({
         {...register(name)}
         disabled={disabled}
         required
+        onPaste={disablePaste ? (e) => e.preventDefault() : undefined}
       />
       <ErrorLabel name={name} errors={errors} />
     </div>

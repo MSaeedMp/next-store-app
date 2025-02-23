@@ -33,7 +33,7 @@ const SignUpPage = () => {
           newSession={true}
         >
           <FormInput
-            type="name"
+            type="text"
             name="name"
             label="Full name"
             placeholder="Enter your name..."
@@ -57,8 +57,8 @@ const SignUpPage = () => {
             type="password"
             name="confirmPassword"
             label="Confirm Password"
-            placeholder="Enter your password..."
-            autocomplete="current-password"
+            placeholder="Confirm your password..."
+            disablePaste={true}
           />
 
           <SubmitButton text="Sign up" className="w-full mt-4" />

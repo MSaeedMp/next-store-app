@@ -1,5 +1,3 @@
-// components/global/ScrollButton.tsx
-
 import { Button } from "../ui/button";
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md";
 

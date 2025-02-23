@@ -25,9 +25,12 @@ const UsefulLinksTable = () => {
         return (
           <div key={gp.title}>
             <ul className="flex-col gap-2 flex px-4">
-              <li className="font-semibold mb-6">Online store guide</li>
+              <li className="font-semibold mb-6">{gp.title}</li>
               {gp.subTitles.map((sb) => (
-                <li className="text-stone-300 hover:text-stone-100 cursor-pointer" key={sb}>
+                <li
+                  className="text-stone-300 hover:text-stone-100 cursor-pointer"
+                  key={sb}
+                >
                   {sb}
                 </li>
               ))}

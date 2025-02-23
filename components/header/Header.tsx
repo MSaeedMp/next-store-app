@@ -49,8 +49,8 @@ const Header = () => {
   }, [lastScrollY]);
 
   return (
-    <Container className="bg-stone-900 fixed left-1/2 -translate-x-1/2 top-0 z-40 w-full">
-      <div
+    <Container className="bg-stone-900 fixed left-1/2 -translate-x-1/2 top-0 z-40">
+      <header
         className={cn(
           "flex items-center justify-between sm:h-20 h-16 border-b border-b-stone-700 transition-height duration-300",
           showHeader || isFocused ? "sm:h-20 h-16" : "sm:h-0 h-0 invisible"
@@ -78,7 +78,7 @@ const Header = () => {
             </>
           )}
         </div>
-      </div>
+      </header>
       {isMobile && (
         <div
           className={cn(

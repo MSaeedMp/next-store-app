@@ -26,22 +26,21 @@ const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <ul className={"hidden lg:flex lg:items-center h-full lg:self-stretch"}>
+    <nav className={"hidden lg:flex lg:items-center h-full lg:self-stretch"}>
       {navItems.map((item) => (
-        <li key={item.title} className="h-full">
-          <Button
-            variant="link"
-            className={cn(
-              "text-base text-stone-400 py-0 px-6 hover:no-underline hover:text-stone-100 h-full font-[600]",
-              item.url === pathname && "text-stone-100"
-            )}
-            asChild
-          >
-            <Link href={item.url}>{item.title}</Link>
-          </Button>
-        </li>
+        <Button
+          variant="link"
+          key={item.title}
+          className={cn(
+            "text-base text-stone-400 py-0 px-6 hover:no-underline hover:text-stone-100 h-full font-[600]",
+            item.url === pathname && "text-stone-100"
+          )}
+          asChild
+        >
+          <Link href={item.url}>{item.title}</Link>
+        </Button>
       ))}
-    </ul>
+    </nav>
   );
 };
 export default Navbar;
