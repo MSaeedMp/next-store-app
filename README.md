@@ -2,7 +2,7 @@
 
 NextStore is a modern e-commerce platform built with **Next.js**. The app provides a seamless shopping experience with easy navigation, product browsing, and secure checkout. It allows users to view products, add them to the cart, complete their purchase with integrated payment options, and manage product reviews and favorites. Additionally, it includes an **Admin Dashboard** for managing products, orders, and users.
 
-![NextStore Demo](./next-store.png)
+![NextCabin Screenshot](public/next-store.png)
 
 ## Live Demo
 
@@ -32,7 +32,7 @@ Ensure you have **Node.js** and a package manager installed (npm, yarn, pnpm, or
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/MSaeedMp/next-store-app
+git clone https://github.com/MSaeedMp/next-store-app.git
 cd nextstore
 npm install  # or yarn install or pnpm install or bun install
 ```
